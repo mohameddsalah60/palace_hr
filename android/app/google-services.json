@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "736187335483",
+    "project_id": "palacehr-8a851",
+    "storage_bucket": "palacehr-8a851.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736187335483:android:cdf5d6fac9cdc720aeed1e",
+        "android_client_info": {
+          "package_name": "com.palace.hr.mosalah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf5PPFEapVEj6ge04WylJdxLVopb45yuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
