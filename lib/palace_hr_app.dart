@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/networking/constants_database_path.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/app_routes.dart';
+import 'core/services/shared_preferences_service.dart';
 import 'core/utils/app_colors.dart';
 
 class PalaceHr extends StatelessWidget {
@@ -15,7 +17,12 @@ class PalaceHr extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        initialRoute: AppRoutes.splash,
+        initialRoute:
+            SharedPreferencesService.getString(
+                  ConstantsDatabasePath.userDataLocalStorage,
+                ).isEmpty
+                ? AppRoutes.login
+                : AppRoutes.home,
         onGenerateRoute: AppRouter.onGenerateRoute,
         debugShowCheckedModeBanner: false,
         title: 'Palace HR',

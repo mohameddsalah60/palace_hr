@@ -33,8 +33,8 @@ class SharedPreferencesService {
     return sharedPreferences.getDouble(key);
   }
 
-  static String? getString(String key) {
-    return sharedPreferences.getString(key);
+  static String getString(String key) {
+    return sharedPreferences.getString(key) ?? '';
   }
 
   static List<String>? getStringList(String key) {
