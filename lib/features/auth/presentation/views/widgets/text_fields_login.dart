@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/app_regex.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../generated/l10n.dart';
 import '../../cubits/cubit/login_cubit.dart';
 import 'password_validations.dart';
 
@@ -52,12 +53,22 @@ class _TextFieldsLoginState extends State<TextFieldsLogin> {
         children: [
           CustomTextFromField(
             controller: context.read<LoginCubit>().emailController,
-            validator: context.read<LoginCubit>().validatorEmail,
-            hintText: 'Email',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return S.of(context).emailRequired;
+              } else if (!AppRegex.isEmailValid(value)) {
+                return S.of(context).emailInvalid;
+              } else if (!value.contains('@palace.com')) {
+                return S.of(context).emailDomainInvalid;
+              }
+              return null;
+            },
+            hintText: S.of(context).email,
+            keyboardType: TextInputType.emailAddress,
           ),
           SizedBox(height: 16.h),
           PasswordFieldLogin(passwordController: passwordController),
-          SizedBox(height: 16.h),
+          SizedBox(height: 24.h),
           PasswordValidations(
             hasLowerCase: hasLowercase,
             hasUpperCase: hasUppercase,
@@ -85,15 +96,22 @@ class PasswordFieldLogin extends StatelessWidget {
           context.read<LoginCubit>().togglePasswordVisibility();
         },
         icon: Icon(
-          context.read<LoginCubit>().isObscure
+          context.watch<LoginCubit>().isObscure
               ? Icons.visibility
               : Icons.visibility_off,
         ),
       ),
       controller: passwordController,
-      validator: context.read<LoginCubit>().validatorPassword,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return S.of(context).passwordRequired;
+        } else if (!AppRegex.isPasswordValid(value)) {
+          return S.of(context).passwordInvalid;
+        }
+        return null;
+      },
 
-      hintText: 'Password',
+      hintText: S.of(context).password,
     );
   }
 }

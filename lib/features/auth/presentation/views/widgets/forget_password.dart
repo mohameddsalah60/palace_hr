@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:palace_hr/core/helpers/extinctions.dart';
+import 'package:palace_hr/generated/l10n.dart';
 
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -23,7 +24,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             context.pushNamed(AppRoutes.forgetPassword);
           },
           child: Text(
-            'Forget password?',
+            S.of(context).forgetPassword,
             style: AppTextStyles.fontWeight400Size12.copyWith(
               color: AppColors.mainBlue,
             ),

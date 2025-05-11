@@ -44,6 +44,10 @@ dependencies:
   json_serializable: ^6.9.4
   phone_form_field: ^10.0.6
   shared_preferences: ^2.5.3
+  intl: ^0.19.0
+  flutter_localizations:
+        sdk: flutter
+
 
 dev_dependencies:
   build_runner: ^2.4.15
@@ -68,15 +72,16 @@ flutter:
     - path: assets/images/
     - path: assets/svg/
   fonts:
-    - family: Inter
+
+    - family: Cairo
       fonts:
-        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Cairo-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Cairo-Light.ttf
           weight: 500
-        - asset: assets/fonts/Inter-SemiBold.ttf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
           weight: 700
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -107,3 +112,13 @@ flutter_launcher_icons:
   image_path: "assets/images/palace_logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   adaptive_icon_background: "#ffffff"
+flutter_intl:
+  enabled: true
+  localizations:
+    - arb-dir: lib/l10n
+      template-arb-file: app_en.arb
+      output-dir: lib/l10n/generated
+      output-class: AppLocalizations
+      preferred-locales:
+        - en
+        - ar

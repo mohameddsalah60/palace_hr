@@ -14,4 +14,6 @@ class AppColors {
   static const Color error = Color(0xFFB00020);
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFFFA000);
+  static const Color wheit = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
 }

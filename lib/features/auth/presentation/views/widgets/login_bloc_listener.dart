@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/core/helpers/extinctions.dart';
 import 'package:palace_hr/core/routing/app_routes.dart';
+import 'package:palace_hr/generated/l10n.dart';
 
 import '../../../../../core/widgets/custom_circular_progress_indicator.dart';
 import '../../../../../core/widgets/custom_snackbar.dart';
@@ -26,7 +27,7 @@ class LoginBlocListener extends StatelessWidget {
           context.pop();
           customSnackBar(
             context: context,
-            message: 'Login successful',
+            message: S.of(context).LoginSuccess,
             color: Colors.green,
           );
           context.pushReplacementNamed(AppRoutes.home);

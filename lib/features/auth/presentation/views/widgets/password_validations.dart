@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class PasswordValidations extends StatelessWidget {
   final bool hasLowerCase;
@@ -20,23 +22,18 @@ class PasswordValidations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Column(
       children: [
-        buildValidationRow('At least 1 lowercase letter', hasLowerCase),
-        SizedBox(height: 2),
-
-        buildValidationRow('At least 1 uppercase letter', hasUpperCase),
-        SizedBox(height: 2),
-
-        buildValidationRow(
-          'At least 1 special character',
-          hasSpecialCharacters,
-        ),
-        SizedBox(height: 2),
-
-        buildValidationRow('At least 1 number', hasNumber),
-        SizedBox(height: 2),
-        buildValidationRow('At least 8 characters long', hasMinLength),
+        buildValidationRow(s.passwordLowercase, hasLowerCase),
+        SizedBox(height: 4.h),
+        buildValidationRow(s.passwordUppercase, hasUpperCase),
+        SizedBox(height: 4.h),
+        buildValidationRow(s.passwordSpecialChar, hasSpecialCharacters),
+        SizedBox(height: 4.h),
+        buildValidationRow(s.passwordNumber, hasNumber),
+        SizedBox(height: 4.h),
+        buildValidationRow(s.passwordMinLength, hasMinLength),
       ],
     );
   }

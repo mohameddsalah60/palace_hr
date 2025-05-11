@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/features/auth/domin/repos/auth_repo.dart';
 
-import '../../../../../core/helpers/app_regex.dart';
-
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -28,26 +26,6 @@ class LoginCubit extends Cubit<LoginState> {
       (l) => emit(LoginError(l.errMessage)),
       (r) => emit(LoginSuccess()),
     );
-  }
-
-  String? validatorPassword(value) {
-    if (value == null || value.isEmpty) {
-      return 'This field password number is required.';
-    } else if (!AppRegex.isPasswordValid(value)) {
-      return 'Please enter a valid password.';
-    }
-    return null;
-  }
-
-  String? validatorEmail(value) {
-    if (value == null || value.isEmpty) {
-      return 'This field email is required.';
-    } else if (!AppRegex.isEmailValid(value)) {
-      return 'Please enter a valid email address.';
-    } else if (!value.contains('@palace.com')) {
-      return 'Please enter a valid email address.';
-    }
-    return null;
   }
 
   @override

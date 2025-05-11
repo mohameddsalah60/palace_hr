@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/core/helpers/extinctions.dart';
+import 'package:palace_hr/generated/l10n.dart';
 
 import '../../../../../core/widgets/custom_circular_progress_indicator.dart';
 import '../../../../../core/widgets/custom_snackbar.dart';
@@ -25,7 +26,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
           context.pop();
           customSnackBar(
             context: context,
-            message: 'Verification code sent to your email',
+            message: S.of(context).verificationCodeSent,
             color: Colors.green,
           );
           context.pop();

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../cubits/cubit/login_cubit.dart';
 import 'login_bloc_listener.dart';
 import 'login_body_header.dart';
@@ -38,7 +39,7 @@ class LoginViewBody extends StatelessWidget {
                   context.read<LoginCubit>().signInWithEmailAndPassword();
                 }
               },
-              text: 'Login',
+              text: S.of(context).login,
             ),
             SizedBox(height: 24.h),
             TermsAndConditionsText(),

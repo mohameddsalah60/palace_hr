@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:palace_hr/generated/l10n.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
@@ -8,28 +9,30 @@ class TermsAndConditionsText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Text.rich(
       textAlign: TextAlign.center,
       TextSpan(
-        text: 'By logging, you agree to our ',
+        text: s.termsIntro,
         style: AppTextStyles.fontWeight400Size14.copyWith(
           color: AppColors.greyDark,
         ),
         children: [
           TextSpan(
-            text: 'Terms & Conditions',
+            text: s.termsTitle,
             style: AppTextStyles.fontWeight500Size14.copyWith(
               color: Colors.black,
             ),
           ),
           TextSpan(
-            text: ' and ',
+            text: s.andWord,
             style: AppTextStyles.fontWeight400Size14.copyWith(
               color: AppColors.greyDark,
             ),
           ),
           TextSpan(
-            text: 'Privacy Policy .',
+            text: s.privacyPolicyTitle,
             style: AppTextStyles.fontWeight500Size14.copyWith(
               color: Colors.black,
             ),
