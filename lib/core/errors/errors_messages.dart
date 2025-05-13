@@ -1,11 +1,6 @@
-import 'package:intl/intl.dart';
+import '../helpers/is_english_locale_funcation.dart';
 
 abstract class ErrorMessages {
-  static bool isEnglishLocale() {
-    final locale = Intl.getCurrentLocale().toLowerCase();
-    return locale.startsWith('en');
-  }
-
   static String get cancellationMessage =>
       isEnglishLocale()
           ? 'Login process was cancelled.'

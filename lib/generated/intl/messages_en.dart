@@ -32,9 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Palace HR is a comprehensive human resources management system designed to streamline HR processes and enhance employee engagement.",
     ),
     "appVersion": MessageLookupByLibrary.simpleMessage("Version 1.0.0"),
+    "attendanceToday": MessageLookupByLibrary.simpleMessage("Day Attendance"),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "Login process was cancelled.",
     ),
+    "checkIn": MessageLookupByLibrary.simpleMessage("Check-in"),
+    "checkOut": MessageLookupByLibrary.simpleMessage("Check-out"),
+    "departure": MessageLookupByLibrary.simpleMessage("Departure"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "This email is already registered. Please log in.",
@@ -66,6 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter a valid email address.",
     ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
+      "You’ve successfully loggedin ",
+    ),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection.",
     ),
@@ -93,13 +100,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "At least 1 uppercase letter",
     ),
+    "present": MessageLookupByLibrary.simpleMessage("Present"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "Privacy Policy.",
+    ),
+    "selfieRequestBody": MessageLookupByLibrary.simpleMessage(
+      "We need a quick selfie to recognize you and simplify the login process.",
     ),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Server error. Please try again later.",
     ),
+    "startButton": MessageLookupByLibrary.simpleMessage("Start   📸"),
     "termsIntro": MessageLookupByLibrary.simpleMessage(
       "By logging, you agree to our ",
     ),

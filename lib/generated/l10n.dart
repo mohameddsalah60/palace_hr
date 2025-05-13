@@ -449,6 +449,61 @@ class S {
       args: [],
     );
   }
+
+  /// `Day Attendance`
+  String get attendanceToday {
+    return Intl.message(
+      'Day Attendance',
+      name: 'attendanceToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in`
+  String get checkIn {
+    return Intl.message('Check-in', name: 'checkIn', desc: '', args: []);
+  }
+
+  /// `Present`
+  String get present {
+    return Intl.message('Present', name: 'present', desc: '', args: []);
+  }
+
+  /// `Check-out`
+  String get checkOut {
+    return Intl.message('Check-out', name: 'checkOut', desc: '', args: []);
+  }
+
+  /// `Departure`
+  String get departure {
+    return Intl.message('Departure', name: 'departure', desc: '', args: []);
+  }
+
+  /// `You’ve successfully loggedin `
+  String get loginSuccessTitle {
+    return Intl.message(
+      'You’ve successfully loggedin ',
+      name: 'loginSuccessTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We need a quick selfie to recognize you and simplify the login process.`
+  String get selfieRequestBody {
+    return Intl.message(
+      'We need a quick selfie to recognize you and simplify the login process.',
+      name: 'selfieRequestBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start   📸`
+  String get startButton {
+    return Intl.message('Start   📸', name: 'startButton', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

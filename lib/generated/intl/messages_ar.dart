@@ -34,9 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "بالاس اتش ار هو نظام شامل لإدارة الموارد البشرية مصمم لتبسيط عمليات الموارد البشرية وتعزيز مشاركة الموظفين.",
     ),
     "appVersion": MessageLookupByLibrary.simpleMessage("الإصدار 1.0.0"),
+    "attendanceToday": MessageLookupByLibrary.simpleMessage("الحضور اليوم"),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء عملية تسجيل الدخول.",
     ),
+    "checkIn": MessageLookupByLibrary.simpleMessage("الدخول"),
+    "checkOut": MessageLookupByLibrary.simpleMessage("الخروج"),
+    "departure": MessageLookupByLibrary.simpleMessage("الانصراف"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "هذا البريد مسجل مسبقًا. يرجى تسجيل الدخول.",
@@ -68,6 +72,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجى إدخال بريد إلكتروني صحيح.",
     ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
+      "سجلت دخولك بنجاح",
+    ),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت.",
     ),
@@ -97,13 +104,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "على الأقل حرف كبير واحد",
     ),
+    "present": MessageLookupByLibrary.simpleMessage("الحضور"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "سياسة الخصوصية.",
+    ),
+    "selfieRequestBody": MessageLookupByLibrary.simpleMessage(
+      "دلوقتي محتاجين صورة سيلفي سريعة عشان نعرفك أكتر ونسهّل عملية تسجيل الدخول.",
     ),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "خطأ في الخادم. حاول لاحقًا.",
     ),
+    "startButton": MessageLookupByLibrary.simpleMessage("📸   ابدأ"),
     "termsIntro": MessageLookupByLibrary.simpleMessage(
       "بتسجيل الدخول، أنت توافق على ",
     ),

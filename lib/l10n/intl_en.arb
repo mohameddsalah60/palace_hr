@@ -41,7 +41,16 @@
   "send": "Send",
   "forgetPassword_": "Forget Password",
   "verificationCodeSent": "Verification code sent to your email",
-"LoginSuccess": "Login successful"
+"LoginSuccess": "Login successful",
+"attendanceToday": "Day Attendance",
+"checkIn": "Check-in",
+"present": "Present",
+"checkOut": "Check-out",
+"departure": "Departure",
+
+"loginSuccessTitle": "You’ve successfully loggedin ",
+"selfieRequestBody": "We need a quick selfie to recognize you and simplify the login process.",
+"startButton": "Start   📸"
 
   }
   
