@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email address.",
     ),
+    "loading": MessageLookupByLibrary.simpleMessage("Loading...."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "You’ve successfully loggedin ",
@@ -79,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "No internet connection. Please check your connection.",
     ),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "palaceHR": MessageLookupByLibrary.simpleMessage("Palace Hotel HR"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
@@ -118,6 +120,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsTitle": MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "Unauthorized access. Please log in again.",
+    ),
+    "uploadedImage": MessageLookupByLibrary.simpleMessage(
+      "Image uploaded successfully",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage(
       "Your account has been disabled.",

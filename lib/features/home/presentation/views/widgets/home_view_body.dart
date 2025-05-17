@@ -16,7 +16,6 @@ class HomeViewBody extends StatelessWidget {
         SizedBox(height: 16.h),
         HomeCalendar(),
         SizedBox(height: 16.h),
-
         AttendanceDay(),
       ],
     );

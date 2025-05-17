@@ -40,10 +40,7 @@ class _HomeViewState extends State<HomeView> {
         currentIndex: _currentIndex,
         onTap: _onBottomNavTapped,
       ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: const [HomeViewBody()],
-      ),
+      body: IndexedStack(index: _currentIndex, children: [HomeViewBody()]),
     );
   }
 }

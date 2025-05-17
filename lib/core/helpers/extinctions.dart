@@ -12,4 +12,8 @@ extension Navigation on BuildContext {
   void pop() {
     Navigator.pop(this);
   }
+
+  void canPop() {
+    Navigator.canPop(this);
+  }
 }

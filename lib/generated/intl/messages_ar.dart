@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال بريد إلكتروني صحيح.",
     ),
+    "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل...."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "سجلت دخولك بنجاح",
@@ -81,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت. تحقق من الاتصال.",
     ),
+    "ok": MessageLookupByLibrary.simpleMessage("اوكي"),
     "palaceHR": MessageLookupByLibrary.simpleMessage("بالاس اتش ار"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
@@ -122,6 +124,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsTitle": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "دخول غير مصرح به. يرجى تسجيل الدخول مرة أخرى.",
+    ),
+    "uploadedImage": MessageLookupByLibrary.simpleMessage(
+      "تم رفع الصوره بنجاح",
     ),
     "userDisabled": MessageLookupByLibrary.simpleMessage("تم تعطيل حسابك."),
     "userNotFound": MessageLookupByLibrary.simpleMessage(

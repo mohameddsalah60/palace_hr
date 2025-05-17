@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'api_error_model.dart';
 import 'errors_messages.dart';
@@ -13,6 +14,10 @@ class ApiErrorHandler {
           errMessage: ErrorMessages.getFirebaseErrorMessage(error.code),
         );
       }
+    } else if (error is StorageException) {
+      return ServerFailure(
+        errMessage: ErrorMessages.getSupabaseErrorMessage(error.message),
+      );
     } else if (error is Map<String, dynamic>) {
       return error['message'] ?? 'Unknown error';
     } else if (error is Exception) {

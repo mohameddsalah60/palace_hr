@@ -10,3 +10,7 @@ class ApiErrorModel {
 class ServerFailure extends ApiErrorModel {
   ServerFailure({required super.errMessage});
 }
+
+class UnknownFailure extends ApiErrorModel {
+  UnknownFailure({required super.errMessage});
+}

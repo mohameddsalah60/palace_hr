@@ -80,4 +80,23 @@ abstract class ErrorMessages {
       }
     }
   }
+
+  static String getSupabaseErrorMessage(String errorCode) {
+    if (isEnglishLocale()) {
+      switch (errorCode) {
+        case 'The resource already exists':
+          return 'The resource already exists';
+        default:
+          return genericErrorMessage;
+      }
+    } else {
+      switch (errorCode) {
+        case 'The resource already exists':
+          return 'الصورة موجودة بالفعل';
+
+        default:
+          return genericErrorMessage;
+      }
+    }
+  }
 }

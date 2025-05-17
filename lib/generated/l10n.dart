@@ -504,6 +504,26 @@ class S {
   String get startButton {
     return Intl.message('Start   📸', name: 'startButton', desc: '', args: []);
   }
+
+  /// `Loading....`
+  String get loading {
+    return Intl.message('Loading....', name: 'loading', desc: '', args: []);
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message('OK', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Image uploaded successfully`
+  String get uploadedImage {
+    return Intl.message(
+      'Image uploaded successfully',
+      name: 'uploadedImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
