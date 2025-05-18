@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:palace_hr/core/helpers/get_user.dart';
 import 'package:palace_hr/core/helpers/is_english_locale_funcation.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
 import 'package:palace_hr/core/utils/app_text_styles.dart';
@@ -43,7 +44,7 @@ class HomeViewHeader extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    'Mohamed Salah Mahmoud Abdel3Al',
+                    getUser().name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: AppTextStyles.fontWeight500Size14.copyWith(
@@ -52,7 +53,7 @@ class HomeViewHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Employee',
+                  getUser().jobTitle,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: AppTextStyles.fontWeight500Size14.copyWith(

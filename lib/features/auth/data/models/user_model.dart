@@ -12,6 +12,8 @@ class UserModel extends UserEntity {
     @JsonValue(3) super.countPermission,
     @JsonValue(22) super.countAnnualDays,
     super.faceIdUrl = '',
+    required super.jobTitle,
+    super.offDay,
   });
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
@@ -25,6 +27,8 @@ class UserModel extends UserEntity {
       countPermission: userEntity.countPermission,
       countAnnualDays: userEntity.countAnnualDays,
       faceIdUrl: userEntity.faceIdUrl,
+      jobTitle: userEntity.jobTitle,
+      offDay: userEntity.offDay,
     );
   }
   Map<String, dynamic> toMap() {
@@ -36,6 +40,8 @@ class UserModel extends UserEntity {
       'countPermission': countPermission,
       'countAnnualDays': countAnnualDays,
       'faceIdUrl': faceIdUrl,
+      'jobTitle': jobTitle,
+      'offDay': offDay,
     };
   }
 }

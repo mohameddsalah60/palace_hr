@@ -6,8 +6,12 @@ class UserEntity {
   int countAnnualDays;
   String? faceIdUrl;
   final String token;
+  final String jobTitle;
+  final String? offDay;
 
   UserEntity({
+    required this.jobTitle,
+    this.offDay,
     this.countPermission = 3,
     this.countAnnualDays = 22,
     this.faceIdUrl = '',

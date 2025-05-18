@@ -14,6 +14,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   countPermission: (json['countPermission'] as num?)?.toInt() ?? 3,
   countAnnualDays: (json['countAnnualDays'] as num?)?.toInt() ?? 22,
   faceIdUrl: json['faceIdUrl'] as String? ?? '',
+  jobTitle: json['jobTitle'] as String,
+  offDay: json['offDay'] as String?,
 );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -24,4 +26,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'countAnnualDays': instance.countAnnualDays,
   'faceIdUrl': instance.faceIdUrl,
   'token': instance.token,
+  'jobTitle': instance.jobTitle,
+  'offDay': instance.offDay,
 };
