@@ -9,6 +9,7 @@ abstract class DatabaseService {
     required String path,
     String? uId,
     String? subPath,
+    String? subPathId,
     Map<String, dynamic>? query,
   });
   Stream<dynamic> getStreamData({
@@ -17,17 +18,11 @@ abstract class DatabaseService {
     String? subPath,
     Map<String, dynamic>? query,
   });
-  Future<bool> checkIfDataExists({
-    required String path,
-    required String docId,
-  });
+  Future<bool> checkIfDataExists({required String path, required String docId});
   Future<void> updateData({
     required String path,
     required String uId,
     required Map<String, dynamic> value,
   });
-  Future<void> deleteData({
-    required String path,
-    required String uId,
-  });
+  Future<void> deleteData({required String path, required String uId});
 }

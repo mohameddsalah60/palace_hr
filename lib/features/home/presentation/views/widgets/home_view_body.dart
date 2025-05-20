@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:palace_hr/features/home/presentation/views/widgets/home_calendar.dart';
 
-import 'attendance_day.dart';
+import 'attendance_day_builder.dart';
+import 'home_calendar.dart';
 import 'home_view_header.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeViewBody extends StatelessWidget {
         SizedBox(height: 16.h),
         HomeCalendar(),
         SizedBox(height: 16.h),
-        AttendanceDay(),
+        AttendanceDayBuilder(),
       ],
     );
   }

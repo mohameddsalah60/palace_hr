@@ -13,10 +13,12 @@ import 'package:palace_hr/core/networking/constants_database_path.dart';
 import 'package:palace_hr/core/networking/database_service.dart';
 import 'package:palace_hr/core/networking/storage_service.dart';
 import 'package:palace_hr/core/services/shared_preferences_service.dart';
+import 'package:palace_hr/features/home/domin/entites/schedules_entity.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../domin/repos/home_repo.dart';
+import '../models/schedules_model.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final StorageService storageService;
@@ -94,5 +96,31 @@ class HomeRepoImpl implements HomeRepo {
       key: ConstantsDatabasePath.userDataLocalStorage,
       value: jsonData,
     );
+  }
+
+  @override
+  Future<Either<ApiErrorModel, SchedulesEntity>> loadUserSchedules({
+    required DateTime date,
+  }) async {
+    try {
+      final formattedMonth =
+          "${date.year}-${date.month.toString().padLeft(2, '0')}";
+      final result = await databaseService.getData(
+        path: ConstantsDatabasePath.getUserData,
+        uId: getUser().email,
+        subPath: ConstantsDatabasePath.getUserSchedule,
+        subPathId: formattedMonth,
+      );
+      SchedulesEntity schedules = SchedulesModel.fromJson(result);
+
+      return right(schedules);
+    } on CustomException catch (e) {
+      return left(ServerFailure(errMessage: e.message));
+    } catch (e) {
+      log(e.toString());
+      return left(
+        ServerFailure(errMessage: ApiErrorHandler.handleError(e).errMessage),
+      );
+    }
   }
 }

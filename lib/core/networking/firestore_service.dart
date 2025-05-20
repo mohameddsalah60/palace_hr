@@ -25,41 +25,47 @@ class FirestoreService implements DatabaseService {
     }
   }
 
-  @override
   Future<dynamic> getData({
     required String path,
     String? uId,
     String? subPath,
+    String? subPathId,
     Map<String, dynamic>? query,
   }) async {
+    if (uId != null && subPath != null && subPathId != null) {
+      // جلب مستند من مجموعة فرعية مع docId فرعي (subPathId)
+      var data =
+          await firestoreService
+              .collection(path)
+              .doc(uId)
+              .collection(subPath)
+              .doc(subPathId)
+              .get();
+      return data.data();
+    }
+
     if (uId != null) {
+      // جلب مستند مباشر
       var data = await firestoreService.collection(path).doc(uId).get();
       return data.data();
     }
-    if (subPath != null && uId != null) {
-      var data = await firestoreService
-          .collection(path)
-          .doc(uId)
-          .collection(subPath)
-          .get();
-      return data.docs.map((e) => e.data());
-    } else {
-      Query<Map<String, dynamic>> data = firestoreService.collection(path);
-      if (query != null) {
-        if (query['where'] != null) {
-          var whereField = query['where'];
-          var isEqualTo = query['isEqualTo'];
-          data = data.where(whereField, isEqualTo: isEqualTo);
-        }
-        if (query['orderBy'] != null) {
-          var orderByField = query['orderBy'];
-          var descending = query['descending'] ?? false;
-          data = data.orderBy(orderByField, descending: descending);
-        }
+
+    // جلب بيانات من مجموعة بدون uId
+    Query<Map<String, dynamic>> data = firestoreService.collection(path);
+    if (query != null) {
+      if (query['where'] != null) {
+        var whereField = query['where'];
+        var isEqualTo = query['isEqualTo'];
+        data = data.where(whereField, isEqualTo: isEqualTo);
       }
-      var result = await data.get();
-      return result.docs.map((e) => e.data()).toList();
+      if (query['orderBy'] != null) {
+        var orderByField = query['orderBy'];
+        var descending = query['descending'] ?? false;
+        data = data.orderBy(orderByField, descending: descending);
+      }
     }
+    var result = await data.get();
+    return result.docs.map((e) => e.data()).toList();
   }
 
   @override
@@ -71,18 +77,23 @@ class FirestoreService implements DatabaseService {
   }) async* {
     try {
       // الحالة 3: لا يوجد uId ولا subPath
-      Query<Map<String, dynamic>> collectionRef =
-          firestoreService.collection(path);
+      Query<Map<String, dynamic>> collectionRef = firestoreService.collection(
+        path,
+      );
 
       if (query != null) {
         if (query['where'] != null && query['isEqualTo'] != null) {
-          collectionRef = collectionRef.where(query['where'],
-              isEqualTo: query['isEqualTo']);
+          collectionRef = collectionRef.where(
+            query['where'],
+            isEqualTo: query['isEqualTo'],
+          );
         }
 
         if (query['orderBy'] != null) {
-          collectionRef = collectionRef.orderBy(query['orderBy'],
-              descending: query['descending'] ?? false);
+          collectionRef = collectionRef.orderBy(
+            query['orderBy'],
+            descending: query['descending'] ?? false,
+          );
         }
       }
       await for (var result in collectionRef.snapshots()) {
@@ -94,17 +105,20 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<bool> checkIfDataExists(
-      {required String path, required String docId}) async {
+  Future<bool> checkIfDataExists({
+    required String path,
+    required String docId,
+  }) async {
     var data = await firestoreService.collection(path).doc(docId).get();
     return data.exists;
   }
 
   @override
-  Future<void> updateData(
-      {required String path,
-      required String uId,
-      required Map<String, dynamic> value}) async {
+  Future<void> updateData({
+    required String path,
+    required String uId,
+    required Map<String, dynamic> value,
+  }) async {
     await firestoreService.collection(path).doc(uId).update(value);
   }
 
