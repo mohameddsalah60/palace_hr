@@ -25,6 +25,7 @@ class FirestoreService implements DatabaseService {
     }
   }
 
+  @override
   Future<dynamic> getData({
     required String path,
     String? uId,
@@ -33,7 +34,6 @@ class FirestoreService implements DatabaseService {
     Map<String, dynamic>? query,
   }) async {
     if (uId != null && subPath != null && subPathId != null) {
-      // جلب مستند من مجموعة فرعية مع docId فرعي (subPathId)
       var data =
           await firestoreService
               .collection(path)
