@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/is_english_locale_funcation.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../cubits/cubit/user_schedule_cubit.dart';
+import '../../cubits/cubit/home_cubit.dart';
 
 class HomeCalendar extends StatelessWidget {
   const HomeCalendar({super.key});
@@ -37,7 +37,7 @@ class HomeCalendar extends StatelessWidget {
         ),
         lastDate: DateTime(DateTime.now().year + 1),
         onDateSelected: (date) async {
-          context.read<UserScheduleCubit>().updateSelectedDay(date);
+          context.read<HomeCubit>().updateSelectedDay(date);
         },
         monthColor: AppColors.grey,
         dayColor: AppColors.grey,

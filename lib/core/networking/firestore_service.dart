@@ -10,16 +10,24 @@ class FirestoreService implements DatabaseService {
     required String path,
     String? docId,
     String? subPath,
+    String? subPathDocId,
     required Map<String, dynamic> data,
   }) async {
-    if (docId != null) {
-      await firestoreService.collection(path).doc(docId).set(data);
-    } else if (subPath != null) {
+    if (docId != null && subPath != null && subPathDocId != null) {
+      await firestoreService
+          .collection(path)
+          .doc(docId)
+          .collection(subPath)
+          .doc(subPathDocId)
+          .set(data);
+    } else if (docId != null && subPath != null) {
       await firestoreService
           .collection(path)
           .doc(docId)
           .collection(subPath)
           .add(data);
+    } else if (docId != null) {
+      await firestoreService.collection(path).doc(docId).set(data);
     } else {
       await firestoreService.collection(path).add(data);
     }
@@ -107,8 +115,21 @@ class FirestoreService implements DatabaseService {
   @override
   Future<bool> checkIfDataExists({
     required String path,
-    required String docId,
+    String? docId,
+    String? subPath,
+    String? subPathId,
   }) async {
+    if (docId != null && subPath != null && subPathId != null) {
+      var data =
+          await firestoreService
+              .collection(path)
+              .doc(docId)
+              .collection(subPath)
+              .doc(subPathId)
+              .get();
+      return data.exists;
+    }
+
     var data = await firestoreService.collection(path).doc(docId).get();
     return data.exists;
   }

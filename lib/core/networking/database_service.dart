@@ -3,6 +3,7 @@ abstract class DatabaseService {
     String? docId,
     required String path,
     String? subPath,
+    String? subPathDocId,
     required Map<String, dynamic> data,
   });
   Future<dynamic> getData({
@@ -18,7 +19,12 @@ abstract class DatabaseService {
     String? subPath,
     Map<String, dynamic>? query,
   });
-  Future<bool> checkIfDataExists({required String path, required String docId});
+  Future<bool> checkIfDataExists({
+    required String path,
+    required String docId,
+    String? subPath,
+    String? subPathId,
+  });
   Future<void> updateData({
     required String path,
     required String uId,

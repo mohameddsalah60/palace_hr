@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:palace_hr/features/home/domin/entites/schedules_entity.dart';
 
 class SchedulesModel extends SchedulesEntity {
@@ -25,7 +26,15 @@ class DayModel extends DayEntity {
   factory DayModel.fromJson(Map<String, dynamic> json) {
     return DayModel(
       day: json['day'] as int,
-      times: Map<String, String>.from(json['times']),
+      times: (json['times'] as Map<String, dynamic>).map((key, value) {
+        if (value is Timestamp) {
+          return MapEntry(key, value.toDate());
+        } else if (value is String) {
+          return MapEntry(key, DateTime.parse(value));
+        } else {
+          throw Exception('Invalid date format in times map');
+        }
+      }),
       isOffDay: json['isOffDay'] ?? false,
     );
   }

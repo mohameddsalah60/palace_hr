@@ -8,7 +8,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domin/repos/home_repo.dart';
+import '../../../domin/repos/face_user_repo.dart';
 import '../../cubits/firset_selfie_cubit/firset_selfie_cubit.dart';
 import 'firset_selfie_bloc_listener.dart';
 
@@ -24,7 +24,7 @@ void quickSelfieDialog(BuildContext context, {bool? isLoading}) {
         barrierDismissible: false,
         builder: (context) {
           return BlocProvider(
-            create: (context) => FirsetSelfieCubit(getIt<HomeRepo>()),
+            create: (context) => FirsetSelfieCubit(getIt<FaceUserRepo>()),
             child: AlertDialog(
               backgroundColor: AppColors.wheit,
               shape: RoundedRectangleBorder(

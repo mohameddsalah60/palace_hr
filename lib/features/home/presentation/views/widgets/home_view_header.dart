@@ -36,30 +36,41 @@ class HomeViewHeader extends StatelessWidget {
                   ? MainAxisAlignment.start
                   : MainAxisAlignment.end,
           children: [
-            Column(
-              crossAxisAlignment:
-                  isEnglishLocale()
-                      ? CrossAxisAlignment.start
-                      : CrossAxisAlignment.end,
+            Row(
               children: [
-                Expanded(
-                  child: Text(
-                    getUser().name,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: AppTextStyles.fontWeight500Size14.copyWith(
-                      color: AppColors.black,
+                getUser().faceIdUrl != null
+                    ? CircleAvatar(
+                      radius: 30.r,
+                      backgroundImage: NetworkImage(getUser().faceIdUrl!),
+                    )
+                    : SizedBox.shrink(),
+                SizedBox(width: 16.w),
+                Column(
+                  crossAxisAlignment:
+                      isEnglishLocale()
+                          ? CrossAxisAlignment.start
+                          : CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        getUser().name,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: AppTextStyles.fontWeight500Size14.copyWith(
+                          color: AppColors.black,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Text(
-                  getUser().jobTitle,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: AppTextStyles.fontWeight500Size14.copyWith(
-                    color: AppColors.grey,
-                    fontSize: 13.sp,
-                  ),
+                    Text(
+                      getUser().jobTitle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: AppTextStyles.fontWeight500Size14.copyWith(
+                        color: AppColors.grey,
+                        fontSize: 13.sp,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

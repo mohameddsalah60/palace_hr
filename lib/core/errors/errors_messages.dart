@@ -99,4 +99,34 @@ abstract class ErrorMessages {
       }
     }
   }
+
+  static String get outsideWorkingHours =>
+      isEnglishLocale()
+          ? "You are out of working hours"
+          : "انت خارج ساعات العمل";
+
+  static String get alreadyCheckedIn =>
+      isEnglishLocale()
+          ? "You have already checked in today"
+          : "لقد قمت بتسجيل الحضور بالفعل اليوم";
+
+  static String get notCheckedIn =>
+      isEnglishLocale()
+          ? "You have not checked in today"
+          : "لم تقم بتسجيل الحضور اليوم";
+
+  static String get alreadyCheckedOut =>
+      isEnglishLocale()
+          ? "You have already checked out today"
+          : "لقد قمت بتسجيل الانصراف بالفعل اليوم";
+
+  static String get checkInSuccess =>
+      isEnglishLocale() ? "Check-in successful" : "تم تسجيل الحضور بنجاح";
+
+  static String get checkOutSuccess =>
+      isEnglishLocale() ? "Check-out successful" : "تم تسجيل الانصراف بنجاح";
+  static String get outsideWorkingArea =>
+      isEnglishLocale()
+          ? "You are outside the working area"
+          : "انت خارج منطقة العمل";
 }

@@ -17,55 +17,62 @@ class AttendanceDayItem extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onTap,
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * .4,
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColors.wheitDark,
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-        ),
-        child: Column(
-          children: [
-            Row(
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: MediaQuery.sizeOf(context).width * .4,
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppColors.wheitDark,
+              borderRadius: BorderRadius.all(Radius.circular(16)),
+            ),
+            child: Column(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 4.r, vertical: 6.r),
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: Icon(Icons.login, color: Colors.white, size: 26),
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 4.r,
+                        vertical: 6.r,
+                      ),
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                      ),
+                      child: Icon(Icons.login, color: Colors.white, size: 26),
+                    ),
+                    SizedBox(width: 8.w),
+                    Text(
+                      txt,
+                      style: AppTextStyles.fontWeight400Size14.copyWith(
+                        color: AppColors.black,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 8.w),
+
+                SizedBox(height: 16.h),
                 Text(
-                  txt,
-                  style: AppTextStyles.fontWeight400Size14.copyWith(
+                  time,
+                  style: AppTextStyles.fontWeight700Size24.copyWith(
                     color: AppColors.black,
+                    fontSize: 16.sp,
+                  ),
+                ),
+                SizedBox(height: 16.h),
+                Text(
+                  txt2,
+                  style: AppTextStyles.fontWeight500Size14.copyWith(
+                    color: AppColors.greyDark,
                   ),
                 ),
               ],
             ),
-
-            SizedBox(height: 16.h),
-            Text(
-              time,
-              style: AppTextStyles.fontWeight700Size24.copyWith(
-                color: AppColors.black,
-                fontSize: 16.sp,
-              ),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              txt2,
-              style: AppTextStyles.fontWeight500Size14.copyWith(
-                color: AppColors.greyDark,
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

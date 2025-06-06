@@ -1,8 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
+import 'package:palace_hr/features/home/domin/repos/face_recognition_repo.dart';
 
+import '../../../../core/di/getit_service_loacator.dart';
+import '../../domin/repos/home_repo.dart';
+import '../cubits/cubit/home_cubit.dart';
 import 'widgets/custom_bottom_navigation_bar.dart';
 import 'widgets/home_view_body.dart';
 import 'widgets/quick_selfie_dialog.dart';
@@ -40,7 +45,18 @@ class _HomeViewState extends State<HomeView> {
         currentIndex: _currentIndex,
         onTap: _onBottomNavTapped,
       ),
-      body: IndexedStack(index: _currentIndex, children: [HomeViewBody()]),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [
+          BlocProvider(
+            create:
+                (context) =>
+                    HomeCubit(getIt<HomeRepo>(), getIt<FaceRecognitionRepo>())
+                      ..loadUserSchedules(),
+            child: HomeViewBody(),
+          ),
+        ],
+      ),
     );
   }
 }

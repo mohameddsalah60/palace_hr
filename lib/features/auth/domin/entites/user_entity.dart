@@ -5,7 +5,7 @@ class UserEntity {
   int countPermission;
   int countAnnualDays;
   String? faceIdUrl;
-  final String token;
+  String token;
   final String jobTitle;
   final String? offDay;
 

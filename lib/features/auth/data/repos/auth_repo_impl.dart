@@ -69,7 +69,9 @@ class AuthRepoImpl implements AuthRepo {
     );
     if (userData != null && userData.isNotEmpty) {
       UserEntity userEntity = UserModel.fromJson(userData);
+      userEntity.token = user.uid;
       await saveUserData(userEntity: userEntity);
+      addUserData(userEntity: userEntity);
       return userEntity;
     } else {
       throw CustomException(message: ErrorMessages.emailNotFound);

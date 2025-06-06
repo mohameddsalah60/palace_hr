@@ -9,6 +9,8 @@
 </array>
 <key>NSCameraUsageDescription</key>
 <string>This app needs access to the camera to verify employee presence at the branch through photo identification.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+<string>We use your location to confirm your attendance at the correct location.</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
