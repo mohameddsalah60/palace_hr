@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/features/home/domin/repos/home_repo.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'dart:developer' as log;
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
@@ -151,8 +150,8 @@ class HomeCubit extends Cubit<HomeState> {
   Future<XFile?> getPhoto() async {
     final ImagePicker picker = ImagePicker();
 
-    if (kDebugMode && Platform.isIOS) {
-      final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+    if (kDebugMode) {
+      final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
 
       return photo;
     } else {

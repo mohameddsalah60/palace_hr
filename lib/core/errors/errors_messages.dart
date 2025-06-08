@@ -104,7 +104,10 @@ abstract class ErrorMessages {
       isEnglishLocale()
           ? "You are out of working hours"
           : "انت خارج ساعات العمل";
-
+  static String get insideWorkingHours =>
+      isEnglishLocale()
+          ? "You are within working hours"
+          : "أنت داخل ساعات العمل";
   static String get alreadyCheckedIn =>
       isEnglishLocale()
           ? "You have already checked in today"

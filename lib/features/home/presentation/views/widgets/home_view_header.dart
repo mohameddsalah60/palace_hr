@@ -38,10 +38,17 @@ class HomeViewHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                getUser().faceIdUrl != null
+                isEnglishLocale()
                     ? CircleAvatar(
                       radius: 30.r,
-                      backgroundImage: NetworkImage(getUser().faceIdUrl!),
+                      backgroundImage:
+                          getUser().faceIdUrl != null &&
+                                  getUser().faceIdUrl!.isNotEmpty
+                              ? NetworkImage(getUser().faceIdUrl!)
+                              : const AssetImage(
+                                    'assets/images/palace_logo.png',
+                                  )
+                                  as ImageProvider,
                     )
                     : SizedBox.shrink(),
                 SizedBox(width: 16.w),
@@ -72,6 +79,21 @@ class HomeViewHeader extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(width: 16.w),
+
+                !isEnglishLocale()
+                    ? CircleAvatar(
+                      radius: 30.r,
+                      backgroundImage:
+                          getUser().faceIdUrl != null &&
+                                  getUser().faceIdUrl!.isNotEmpty
+                              ? NetworkImage(getUser().faceIdUrl!)
+                              : const AssetImage(
+                                    'assets/images/palace_logo.png',
+                                  )
+                                  as ImageProvider,
+                    )
+                    : SizedBox.shrink(),
               ],
             ),
           ],

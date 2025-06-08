@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:palace_hr/features/home/domin/repos/face_user_repo.dart';
 
+import '../../../../../core/helpers/get_user.dart';
+
 part 'firset_selfie_state.dart';
 
 class FirsetSelfieCubit extends Cubit<FirsetSelfieState> {
@@ -13,11 +15,12 @@ class FirsetSelfieCubit extends Cubit<FirsetSelfieState> {
 
   final FaceUserRepo userRepo;
   bool isLoading = false;
+  String urlImageUser = getUser().faceIdUrl ?? '';
 
   Future<XFile?> getPhoto() async {
     final ImagePicker picker = ImagePicker();
 
-    if (kDebugMode && Platform.isIOS) {
+    if (kDebugMode) {
       final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
 
       return photo;
@@ -51,7 +54,7 @@ class FirsetSelfieCubit extends Cubit<FirsetSelfieState> {
             },
             (success) {
               isLoading = false;
-
+              urlImageUser = getUser().faceIdUrl!;
               emit(FirsetSelfieSuccess());
             },
           );

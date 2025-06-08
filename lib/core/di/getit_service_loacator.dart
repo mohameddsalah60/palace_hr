@@ -10,6 +10,7 @@ import 'package:palace_hr/features/auth/domin/repos/auth_repo.dart';
 import 'package:palace_hr/features/home/data/repos/home_repo_impl.dart';
 import 'package:palace_hr/features/home/data/repos/user_repo_impl.dart';
 import 'package:palace_hr/features/home/domin/repos/face_recognition_repo.dart';
+import 'package:palace_hr/features/home/domin/repos/face_user_repo.dart';
 import 'package:palace_hr/features/home/domin/repos/home_repo.dart';
 
 import '../../features/home/data/repos/face_recognition_repo_impl.dart';
@@ -18,9 +19,7 @@ import '../networking/database_service.dart';
 
 final getIt = GetIt.instance;
 
-void setup() {
-  // Dio dio = DioFactory.getDio();
-  // // Services
+Future<void> setup() async {
   getIt.registerSingleton<StorageService>(SupabaseStorage());
   getIt.registerSingleton<DatabaseService>(FirestoreService());
   getIt.registerSingleton<AuthService>(FirebaseAuthService());
@@ -34,6 +33,12 @@ void setup() {
     ),
   );
   getIt.registerSingleton<FaceRecognitionRepo>(FaceRecognitionRepoImpl());
+  getIt.registerSingleton<FaceUserRepo>(
+    UserRepoImpl(
+      storageService: getIt<StorageService>(),
+      databaseService: getIt<DatabaseService>(),
+    ),
+  );
   getIt.registerSingleton<UserRepoImpl>(
     UserRepoImpl(
       storageService: getIt<StorageService>(),

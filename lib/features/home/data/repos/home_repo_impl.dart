@@ -120,9 +120,13 @@ class HomeRepoImpl implements HomeRepo {
     required Uint8List photo,
   }) async {
     try {
-      if (!_isSameDate(dateTime, DateTime.now())) {
+      DateTime shiftEnd = dateTime;
+
+      DateTime now = DateTime.now();
+
+      if (shiftEnd.isBefore(now)) {
         return left(
-          ServerFailure(errMessage: ErrorMessages.outsideWorkingHours),
+          ServerFailure(errMessage: ErrorMessages.insideWorkingHours),
         );
       }
       Location location = await locationService.getCurrentPosition();

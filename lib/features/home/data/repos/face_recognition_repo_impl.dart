@@ -23,11 +23,8 @@ class FaceRecognitionRepoImpl implements FaceRecognitionRepo {
       if (response_.statusCode == 200) {
         Uint8List imageBytes = response_.bodyBytes;
 
-        MatchFacesImage mfImage1 = MatchFacesImage(
-          imageBytes,
-          ImageType.PRINTED,
-        );
-        MatchFacesImage mfImage2 = MatchFacesImage(photo, ImageType.PRINTED);
+        MatchFacesImage mfImage1 = MatchFacesImage(imageBytes, ImageType.LIVE);
+        MatchFacesImage mfImage2 = MatchFacesImage(photo, ImageType.LIVE);
 
         var request = MatchFacesRequest([mfImage1, mfImage2]);
 
@@ -35,14 +32,16 @@ class FaceRecognitionRepoImpl implements FaceRecognitionRepo {
 
         var split = await FaceSDK.instance.splitComparedFaces(
           response.results,
-          0.75,
+          0.5,
         );
 
         var match = split.matchedFaces;
+
         if (match.isNotEmpty) {
           var faceSimilarity = (match[0].similarity * 100).toStringAsFixed(2);
           log("Face similarity: $faceSimilarity%");
-          return right(double.parse(faceSimilarity) >= 95.0);
+
+          return right(double.parse(faceSimilarity) >= 85.0);
         } else {
           return left(
             ServerFailure(

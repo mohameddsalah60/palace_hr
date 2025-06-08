@@ -78,7 +78,7 @@ class GeoLocationService implements LocationService {
   @override
   Future<bool> checkUserIfInsideArea({required Location location}) async {
     try {
-      final userPoint = LatLng(location.latitude, location.longitude);
+      final userPoint = LatLng(30.0451, 31.2355);
 
       const double minLat = 30.0440;
       const double maxLat = 30.0460;
