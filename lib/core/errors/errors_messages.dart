@@ -100,6 +100,10 @@ abstract class ErrorMessages {
     }
   }
 
+  static String get tooEarlyForShift =>
+      isEnglishLocale()
+          ? "Too early to check in. You can enter only 2 hours before shift."
+          : "بدري شوية، تقدر تدخل قبل الشيفت بساعتين بس";
   static String get outsideWorkingHours =>
       isEnglishLocale()
           ? "You are out of working hours"

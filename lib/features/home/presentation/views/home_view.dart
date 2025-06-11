@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
 import 'package:palace_hr/features/home/domin/repos/face_recognition_repo.dart';
+import 'package:palace_hr/features/home/domin/repos/schedules_repo.dart';
 
 import '../../../../core/di/getit_service_loacator.dart';
+import '../../../penalties/presentation/views/my_penalties_view.dart';
 import '../../domin/repos/home_repo.dart';
 import '../cubits/cubit/home_cubit.dart';
 import 'widgets/custom_bottom_navigation_bar.dart';
@@ -50,11 +52,14 @@ class _HomeViewState extends State<HomeView> {
         children: [
           BlocProvider(
             create:
-                (context) =>
-                    HomeCubit(getIt<HomeRepo>(), getIt<FaceRecognitionRepo>())
-                      ..loadUserSchedules(),
+                (context) => HomeCubit(
+                  getIt<HomeRepo>(),
+                  getIt<FaceRecognitionRepo>(),
+                  getIt<SchedulesRepo>(),
+                )..loadUserSchedules(),
             child: HomeViewBody(),
           ),
+          MyPenaltiesView(),
         ],
       ),
     );

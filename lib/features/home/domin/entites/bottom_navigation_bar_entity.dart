@@ -16,11 +16,11 @@ List<BottomNavigationBarEntity> get bottomNavigationBarItem => [
     name: isEnglishLocale() ? 'Schedule' : 'الجدول',
   ),
   BottomNavigationBarEntity(
-    icon: FontAwesomeIcons.chartSimple,
-    name: isEnglishLocale() ? 'Statistics' : 'الاحصائيات',
+    icon: FontAwesomeIcons.gavel,
+    name: isEnglishLocale() ? 'My Penalties' : 'جزاتي',
   ),
   BottomNavigationBarEntity(
-    icon: FontAwesomeIcons.bookBookmark,
+    icon: FontAwesomeIcons.clipboardList,
     name: isEnglishLocale() ? 'My Requests' : 'طلباتي',
   ),
   BottomNavigationBarEntity(

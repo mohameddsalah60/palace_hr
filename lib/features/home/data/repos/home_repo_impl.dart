@@ -1,10 +1,7 @@
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
-
 import 'package:palace_hr/core/errors/api_error_model.dart';
-import 'package:palace_hr/core/errors/exceptions.dart';
 import 'package:palace_hr/core/helpers/get_user.dart';
 import 'package:palace_hr/core/networking/constants_database_path.dart';
 import 'package:palace_hr/core/networking/database_service.dart';
@@ -13,53 +10,25 @@ import 'package:palace_hr/core/networking/storage_service.dart';
 import 'package:palace_hr/features/home/data/models/attendance_model.dart';
 import 'package:palace_hr/features/home/domin/entites/attendance_entity.dart';
 import 'package:palace_hr/features/home/domin/entites/schedules_entity.dart';
+import 'package:palace_hr/features/penalties/app/penalty_handler.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/errors/errors_messages.dart';
 import '../../domin/repos/home_repo.dart';
+import '../helpers/home_utils.dart';
 import '../models/schedules_model.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final StorageService storageService;
   final DatabaseService databaseService;
   final LocationService locationService;
+  final PenaltyHandler penaltyHandler;
   HomeRepoImpl({
     required this.locationService,
     required this.storageService,
     required this.databaseService,
+    required this.penaltyHandler,
   });
-
-  @override
-  Future<Either<ApiErrorModel, SchedulesEntity>> loadUserSchedules({
-    required DateTime date,
-  }) async {
-    try {
-      final formattedMonth =
-          "${date.year}-${date.month.toString().padLeft(2, '0')}";
-      final result = await _getData(
-        path: ConstantsDatabasePath.getUserData,
-        docId: getUser().email,
-        subPath: ConstantsDatabasePath.getUserSchedule,
-        subPathId: formattedMonth,
-      );
-      if (result == null) {
-        log("No schedules found for user: ${getUser().email}");
-        return left(
-          ServerFailure(errMessage: "No schedules found for the user."),
-        );
-      }
-
-      SchedulesEntity schedules = SchedulesModel.fromJson(result);
-      return right(schedules);
-    } on CustomException catch (e) {
-      return left(ServerFailure(errMessage: e.message));
-    } catch (e) {
-      log(e.toString());
-      return left(
-        ServerFailure(errMessage: ApiErrorHandler.handleError(e).errMessage),
-      );
-    }
-  }
 
   @override
   Future<Either<ApiErrorModel, AttendanceEntity>> onCheckIn({
@@ -67,50 +36,51 @@ class HomeRepoImpl implements HomeRepo {
     required Uint8List photo,
   }) async {
     try {
-      if (!_isSameDate(attendanceEntity.dateTime, DateTime.now())) {
+      if (!HomeUtils.validateShiftStart(attendanceEntity.dateTime)) {
+        return left(ServerFailure(errMessage: ErrorMessages.tooEarlyForShift));
+      } else if (!HomeUtils.validateShiftNotExpired(
+        attendanceEntity.dateTime,
+      )) {
         return left(
           ServerFailure(errMessage: ErrorMessages.outsideWorkingHours),
         );
       }
-      Location location = await locationService.getCurrentPosition();
-      bool userIsInsideArea = await locationService.checkUserIfInsideArea(
+
+      final location = await locationService.getCurrentPosition();
+      final isInsideArea = await locationService.checkUserIfInsideArea(
         location: location,
       );
-      if (!userIsInsideArea) {
+      if (!isInsideArea) {
         return left(
           ServerFailure(errMessage: ErrorMessages.outsideWorkingArea),
         );
       }
-      AttendanceModel attendanceModel = AttendanceModel.fromEntity(
-        attendanceEntity,
-      );
 
       final existingAttendance = await getAttendanceIfExists(
         path: attendanceEntity.dateTime,
       );
-
       if (existingAttendance != null) {
         return left(ServerFailure(errMessage: ErrorMessages.alreadyCheckedIn));
       }
 
-      await _checkInYesterday();
+      await _checkInYesterday(attendanceEntity.dateTime);
+      await penaltyHandler.handleDelayPenalty(attendanceEntity.dateTime);
+
+      final attendanceModel = AttendanceModel.fromEntity(attendanceEntity);
       attendanceModel.location['lat'] = location.latitude;
       attendanceModel.location['long'] = location.longitude;
-      await _addData(
+
+      await HomeUtils.addData(
+        databaseService: databaseService,
         data: attendanceModel.toJson(),
         docId: getUser().email,
         subPath: ConstantsDatabasePath.getUserAttendence,
-        subPathDocId: _formatDate(attendanceEntity.dateTime),
+        subPathDocId: HomeUtils.formatDate(attendanceEntity.dateTime),
       );
 
       return right(attendanceEntity);
-    } on CustomException catch (e) {
-      return left(ServerFailure(errMessage: e.message));
     } catch (e) {
-      log(e.toString());
-      return left(
-        ServerFailure(errMessage: ApiErrorHandler.handleError(e).errMessage),
-      );
+      return left(ApiErrorHandler.handleError(e));
     }
   }
 
@@ -120,73 +90,64 @@ class HomeRepoImpl implements HomeRepo {
     required Uint8List photo,
   }) async {
     try {
-      DateTime shiftEnd = dateTime;
-
-      DateTime now = DateTime.now();
-
-      if (shiftEnd.isBefore(now)) {
+      if (!HomeUtils.validateShiftNotExpired(dateTime)) {
         return left(
-          ServerFailure(errMessage: ErrorMessages.insideWorkingHours),
+          ServerFailure(errMessage: ErrorMessages.outsideWorkingHours),
         );
       }
-      Location location = await locationService.getCurrentPosition();
-      bool userIsInsideArea = await locationService.checkUserIfInsideArea(
+      final now = DateTime.now();
+      final location = await locationService.getCurrentPosition();
+      final isInsideArea = await locationService.checkUserIfInsideArea(
         location: location,
       );
-      if (!userIsInsideArea) {
+      if (!isInsideArea) {
         return left(
           ServerFailure(errMessage: ErrorMessages.outsideWorkingArea),
         );
       }
-      final existingAttendance = await getAttendanceIfExists(path: dateTime);
 
+      final existingAttendance = await getAttendanceIfExists(path: dateTime);
       if (existingAttendance == null) {
         return left(ServerFailure(errMessage: ErrorMessages.notCheckedIn));
-      } else if (existingAttendance.checkOut != null &&
-          existingAttendance.checkOut!.isNotEmpty) {
+      } else if (existingAttendance.checkOut != null) {
         return left(ServerFailure(errMessage: ErrorMessages.alreadyCheckedOut));
-      } else {
-        DateTime now = DateTime.now();
-        existingAttendance.checkOut = "${now.hour}:${now.minute}:${now.second}";
-
-        await _addData(
-          data: existingAttendance.toJson(),
-          docId: getUser().email,
-          subPath: ConstantsDatabasePath.getUserAttendence,
-          subPathDocId: _formatDate(existingAttendance.dateTime),
+      } else if (dateTime.isBefore(now)) {
+        return left(
+          ServerFailure(errMessage: ErrorMessages.insideWorkingHours),
         );
       }
 
-      return right(existingAttendance);
-    } on CustomException catch (e) {
-      return left(ServerFailure(errMessage: e.message));
-    } catch (e) {
-      log(e.toString());
-      return left(
-        ServerFailure(errMessage: ApiErrorHandler.handleError(e).errMessage),
-      );
-    }
-  }
+      existingAttendance.checkOut = "${now.hour}:${now.minute}:${now.second}";
 
-  bool _isSameDate(DateTime d1, DateTime d2) {
-    return d1.year == d2.year && d1.month == d2.month && d1.day == d2.day;
+      await HomeUtils.addData(
+        databaseService: databaseService,
+        data: existingAttendance.toJson(),
+        docId: getUser().email,
+        subPath: ConstantsDatabasePath.getUserAttendence,
+        subPathDocId: HomeUtils.formatDate(existingAttendance.dateTime),
+      );
+
+      return right(existingAttendance);
+    } catch (e) {
+      return left(ApiErrorHandler.handleError(e));
+    }
   }
 
   @override
   Future<AttendanceModel?> getAttendanceIfExists({
     required DateTime path,
   }) async {
-    final subPathId = _formatDate(path);
+    final subPathId = HomeUtils.formatDate(path);
     final exists = await databaseService.checkIfDataExists(
       path: ConstantsDatabasePath.getUserData,
       docId: getUser().email,
       subPath: ConstantsDatabasePath.getUserAttendence,
       subPathId: subPathId,
     );
-
     if (!exists) return null;
 
-    final data = await _getData(
+    final data = await HomeUtils.getData(
+      databaseService: databaseService,
       path: ConstantsDatabasePath.getUserData,
       docId: getUser().email,
       subPath: ConstantsDatabasePath.getUserAttendence,
@@ -195,10 +156,9 @@ class HomeRepoImpl implements HomeRepo {
     return AttendanceModel.fromJson(data!);
   }
 
-  Future<void> _checkInYesterday() async {
-    final DateTime now = DateTime.now();
-    final DateTime yesterday = now.subtract(const Duration(days: 1));
-    final String subPathId = _formatDate(yesterday);
+  Future<void> _checkInYesterday(DateTime date) async {
+    final DateTime yesterday = date.subtract(const Duration(days: 1));
+    final String subPathId = HomeUtils.formatDate(yesterday);
 
     final exists = await databaseService.checkIfDataExists(
       path: ConstantsDatabasePath.getUserData,
@@ -208,15 +168,16 @@ class HomeRepoImpl implements HomeRepo {
     );
 
     if (!exists) {
-      final scheduleData = await _getData(
+      final scheduleData = await HomeUtils.getData(
+        databaseService: databaseService,
         path: ConstantsDatabasePath.getUserData,
         docId: getUser().email,
         subPath: ConstantsDatabasePath.getUserSchedule,
-        subPathId: "${now.year}-${now.month.toString().padLeft(2, '0')}",
+        subPathId: "${date.year}-${date.month.toString().padLeft(2, '0')}",
       );
 
-      SchedulesModel schedulesModel = SchedulesModel.fromJson(scheduleData!);
-      DayEntity? day = schedulesModel.days.firstWhere(
+      SchedulesEntity schedulesModel = SchedulesModel.fromJson(scheduleData!);
+      final day = schedulesModel.days.firstWhere(
         (d) => d.day == yesterday.day,
         orElse:
             () => DayModel(
@@ -227,41 +188,8 @@ class HomeRepoImpl implements HomeRepo {
       );
 
       if (!day.isOffDay && day.times['start'] != DateTime.now()) {
-        log("Add user penalty");
-        // TODO: Handle add user penalty
+        await penaltyHandler.handleAbsentPenalty(yesterday);
       }
     }
-  }
-
-  String _formatDate(DateTime date) =>
-      "${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}";
-
-  Future<Map<String, dynamic>?> _getData({
-    required String path,
-    required String docId,
-    required String subPath,
-    required String subPathId,
-  }) async {
-    return await databaseService.getData(
-      path: path,
-      uId: docId,
-      subPath: subPath,
-      subPathId: subPathId,
-    );
-  }
-
-  Future<void> _addData({
-    required Map<String, dynamic> data,
-    required String docId,
-    required String subPath,
-    required String subPathDocId,
-  }) async {
-    await databaseService.addData(
-      data: data,
-      path: ConstantsDatabasePath.getUserData,
-      docId: docId,
-      subPath: subPath,
-      subPathDocId: subPathDocId,
-    );
   }
 }

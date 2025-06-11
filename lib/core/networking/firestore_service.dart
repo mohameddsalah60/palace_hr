@@ -51,6 +51,15 @@ class FirestoreService implements DatabaseService {
               .get();
       return data.data();
     }
+    if (uId != null && subPath != null) {
+      var data =
+          await firestoreService
+              .collection(path)
+              .doc(uId)
+              .collection(subPath)
+              .get();
+      return data.docs.map((e) => e.data()).toList();
+    }
 
     if (uId != null) {
       // جلب مستند مباشر

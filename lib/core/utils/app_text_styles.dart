@@ -13,6 +13,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.mainBlue,
   );
+  static TextStyle fontWeight700Size16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
   static TextStyle fontWeight500Size14 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,

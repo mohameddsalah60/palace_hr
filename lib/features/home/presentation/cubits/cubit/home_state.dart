@@ -16,7 +16,4 @@ final class HomeStateSuccess extends HomeState {
   HomeStateSuccess({required this.schedules});
 }
 
-final class HomeStateAttendanceSuccess extends HomeState {
-  final AttendanceEntity attendanceEntity;
-  HomeStateAttendanceSuccess({required this.attendanceEntity});
-}
+final class HomeStateAttendanceSuccess extends HomeState {}

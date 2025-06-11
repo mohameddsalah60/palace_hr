@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:palace_hr/core/helpers/get_user.dart';
 import 'package:palace_hr/features/home/domin/repos/home_repo.dart';
+import 'package:palace_hr/features/home/domin/repos/schedules_repo.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'dart:developer' as log;
 
@@ -13,14 +15,16 @@ import '../../../domin/repos/face_recognition_repo.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this.homeRepo, this.faceRecognitionRepo)
+  HomeCubit(this.homeRepo, this.faceRecognitionRepo, this.schedulesRepo)
     : super(HomeStateInitial());
   final HomeRepo homeRepo;
+  final SchedulesRepo schedulesRepo;
   final FaceRecognitionRepo faceRecognitionRepo;
   String checkInTime = '--:--:--';
   String checkOutTime = '--:--:--';
   SchedulesEntity? schedulesList;
   DayEntity? dayEntity;
+  String? face = getUser().faceIdUrl;
 
   final RefreshController refreshController = RefreshController();
   void onRefresh() async {
@@ -52,7 +56,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeStateLoading());
     final now = DateTime.now();
 
-    final result = await homeRepo.loadUserSchedules(date: date ?? now);
+    final result = await schedulesRepo.loadUserSchedules(date: date ?? now);
     result.fold((l) => emit(HomeStateFailure(message: l.errMessage)), (
       schedules,
     ) async {
@@ -65,29 +69,30 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  bool isUserLate(DateTime scheduledTime) {
+  Future<bool> isUserLate(DateTime scheduledTime) async {
     DateTime now = DateTime.now();
 
-    final difference = now.difference(scheduledTime).inMinutes;
+    final difference = now.difference(scheduledTime);
 
-    log.log('Current time difference in minutes: $difference');
+    log.log('Current time difference in minutes: ${difference.inMinutes}');
 
-    if (difference > 15) {
-      log.log('User is late');
+    if (difference.inMinutes < 15) {
+      return false;
+    } else {
       return true;
     }
-
-    return false;
   }
 
   onCheckIn({DateTime? dateScheduled}) async {
     DateTime now = DateTime.now();
-    bool late = isUserLate(dateScheduled!);
+    bool late = await isUserLate(dateScheduled!);
     AttendanceEntity attendanceEntity = AttendanceEntity(
       dateTime: DateTime(
         dateScheduled.year,
         dateScheduled.month,
         dateScheduled.day,
+        dateScheduled.hour,
+        dateScheduled.minute,
       ),
       checkIn: "${now.hour}:${now.minute}:${now.second}",
       checkOut: '',
@@ -116,7 +121,7 @@ class HomeCubit extends Cubit<HomeState> {
       ) {
         log.log("Attendance logged successfully");
         checkInTime = attendanceEntity.checkIn;
-        emit(HomeStateSuccess(schedules: schedulesList!));
+        emit(HomeStateAttendanceSuccess());
       });
     });
   }
@@ -142,7 +147,7 @@ class HomeCubit extends Cubit<HomeState> {
         log.log("Attendance logged successfully");
         checkOutTime =
             "${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
-        emit(HomeStateSuccess(schedules: schedulesList!));
+        emit(HomeStateAttendanceSuccess());
       });
     });
   }
@@ -158,5 +163,9 @@ class HomeCubit extends Cubit<HomeState> {
       final XFile? photo = await picker.pickImage(source: ImageSource.camera);
       return photo;
     }
+  }
+
+  emitHomeView() {
+    emit(HomeStateSuccess(schedules: schedulesList!));
   }
 }

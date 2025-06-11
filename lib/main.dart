@@ -13,10 +13,10 @@ import 'palace_hr_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await SharedPreferencesService.init();
 
   Future.wait([
     SupabaseStorage.initSupabase(),
-    SharedPreferencesService.init(),
     FaceSDK.instance.initialize(),
     setup(),
   ]);

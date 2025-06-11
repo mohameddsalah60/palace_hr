@@ -16,4 +16,6 @@ class AppColors {
   static const Color warning = Color(0xFFFFA000);
   static const Color wheit = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color penaltyRed = Color(0xFFD32F2F);
+  static const Color penaltyRedLight = Color(0xFFEF9A9A);
 }

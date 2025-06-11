@@ -10,6 +10,7 @@ import 'package:palace_hr/features/home/domin/entites/schedules_entity.dart';
 import 'package:palace_hr/features/home/presentation/cubits/cubit/home_cubit.dart';
 
 import '../../../../../core/widgets/custom_error_dialog.dart';
+import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
 import 'attendance_day_item.dart';
 import 'day_off_widget.dart';
@@ -34,6 +35,13 @@ class AttendanceDay extends StatelessWidget {
                     },
                   ),
             );
+          } else if (state is HomeStateAttendanceSuccess) {
+            customSnackBar(
+              context: context,
+              message: 'تم تسجيل حضورك / انصرافك بنجاح',
+              color: Colors.green,
+            );
+            context.read<HomeCubit>().emitHomeView();
           }
         },
         builder: (context, state) {

@@ -8,4 +8,5 @@ class ConstantsDatabasePath {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhdGVmdXJvZnNodGl0a2lnanBzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzE3MjAyOSwiZXhwIjoyMDYyNzQ4MDI5fQ.txkFt7ZvoywbGi2VVc_X-ILF7mvoUojqJIsEKrV4QTI';
   static const String getUserSchedule = 'schedules';
   static const String getUserAttendence = 'Attendance';
+  static const String getUserMyPenalties = 'MyPenalties';
 }

@@ -30,11 +30,7 @@ class HomeCalendar extends StatelessWidget {
       child: CalendarTimeline(
         width: 70.w,
         initialDate: DateTime.now(),
-        firstDate: DateTime(
-          DateTime.now().year,
-          DateTime.now().month,
-          DateTime.now().day,
-        ),
+        firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
         lastDate: DateTime(DateTime.now().year + 1),
         onDateSelected: (date) async {
           context.read<HomeCubit>().updateSelectedDay(date);

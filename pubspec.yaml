@@ -54,6 +54,7 @@ dependencies:
   json_annotation: ^4.9.0
   json_serializable: ^6.9.4
   latlong2: ^0.9.1
+  path: ^1.9.1
   phone_form_field: ^10.0.6
   pull_to_refresh_flutter3: ^2.0.2
   shared_preferences: ^2.5.3

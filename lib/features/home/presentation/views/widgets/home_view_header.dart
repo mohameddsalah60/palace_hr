@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:palace_hr/core/helpers/get_user.dart';
 import 'package:palace_hr/core/helpers/is_english_locale_funcation.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
 import 'package:palace_hr/core/utils/app_text_styles.dart';
+import 'package:palace_hr/features/home/presentation/cubits/cubit/home_cubit.dart';
 
 class HomeViewHeader extends StatelessWidget {
   const HomeViewHeader({super.key});
@@ -85,9 +87,9 @@ class HomeViewHeader extends StatelessWidget {
                     ? CircleAvatar(
                       radius: 30.r,
                       backgroundImage:
-                          getUser().faceIdUrl != null &&
-                                  getUser().faceIdUrl!.isNotEmpty
-                              ? NetworkImage(getUser().faceIdUrl!)
+                          context.watch<HomeCubit>().face != null &&
+                                  context.watch<HomeCubit>().face!.isNotEmpty
+                              ? NetworkImage(context.watch<HomeCubit>().face!)
                               : const AssetImage(
                                     'assets/images/palace_logo.png',
                                   )

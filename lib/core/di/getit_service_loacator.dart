@@ -8,12 +8,17 @@ import 'package:palace_hr/core/networking/supabase_storage.dart';
 import 'package:palace_hr/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:palace_hr/features/auth/domin/repos/auth_repo.dart';
 import 'package:palace_hr/features/home/data/repos/home_repo_impl.dart';
+import 'package:palace_hr/features/home/data/repos/schedules_repo_impl.dart';
 import 'package:palace_hr/features/home/data/repos/user_repo_impl.dart';
 import 'package:palace_hr/features/home/domin/repos/face_recognition_repo.dart';
 import 'package:palace_hr/features/home/domin/repos/face_user_repo.dart';
 import 'package:palace_hr/features/home/domin/repos/home_repo.dart';
+import 'package:palace_hr/features/home/domin/repos/schedules_repo.dart';
+import 'package:palace_hr/features/penalties/app/penalty_handler.dart';
+import 'package:palace_hr/features/penalties/domin/repo/penalties_repo.dart';
 
 import '../../features/home/data/repos/face_recognition_repo_impl.dart';
+import '../../features/penalties/data/repos/penalties_repo_impl.dart';
 import '../networking/auth_service.dart';
 import '../networking/database_service.dart';
 
@@ -39,17 +44,32 @@ Future<void> setup() async {
       databaseService: getIt<DatabaseService>(),
     ),
   );
+  getIt.registerSingleton<PenaltiesRepo>(
+    PenaltiesRepoImpl(
+      storageService: getIt<StorageService>(),
+      databaseService: getIt<DatabaseService>(),
+    ),
+  );
   getIt.registerSingleton<UserRepoImpl>(
     UserRepoImpl(
       storageService: getIt<StorageService>(),
       databaseService: getIt<DatabaseService>(),
     ),
   );
+  getIt.registerSingleton<SchedulesRepo>(
+    SchedulesRepoImpl(databaseService: getIt<DatabaseService>()),
+  );
+
+  getIt.registerSingleton<PenaltyHandler>(
+    PenaltyHandler(getIt<PenaltiesRepo>()),
+  );
+
   getIt.registerSingleton<HomeRepo>(
     HomeRepoImpl(
       locationService: getIt<LocationService>(),
       storageService: getIt<StorageService>(),
       databaseService: getIt<DatabaseService>(),
+      penaltyHandler: getIt<PenaltyHandler>(),
     ),
   );
 }

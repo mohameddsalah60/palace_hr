@@ -10,16 +10,6 @@ class GeoLocationService implements LocationService {
 
   @override
   Future<bool> checkLocationPermission() async {
-    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      throw CustomException(
-        message:
-            isEnglish
-                ? 'Location services are disabled. Please enable them from your device settings.'
-                : 'خدمات الموقع غير مفعّلة. من فضلك فعّلها من إعدادات الجهاز.',
-      );
-    }
-
     LocationPermission permission = await Geolocator.checkPermission();
 
     if (permission == LocationPermission.denied) {
@@ -78,7 +68,7 @@ class GeoLocationService implements LocationService {
   @override
   Future<bool> checkUserIfInsideArea({required Location location}) async {
     try {
-      final userPoint = LatLng(30.0451, 31.2355);
+      final userPoint = LatLng(location.latitude, location.longitude);
 
       const double minLat = 30.0440;
       const double maxLat = 30.0460;

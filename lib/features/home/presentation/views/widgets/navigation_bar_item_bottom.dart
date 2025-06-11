@@ -33,11 +33,11 @@ class NavigationBarItem extends StatelessWidget {
             size: 22,
             color: isSelected ? AppColors.mainBlue : AppColors.greyCheckBox,
           ),
-          SizedBox(width: 3.h),
+          SizedBox(width: 5.h),
           Text(
             bottomNavigationBarItem.name,
             style: AppTextStyles.fontWeight400Size14.copyWith(
-              fontSize: 12.sp,
+              fontSize: 11.sp,
               color: isSelected ? AppColors.mainBlue : AppColors.greyCheckBox,
             ),
           ),
