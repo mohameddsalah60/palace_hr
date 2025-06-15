@@ -1,4 +1,4 @@
-import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,23 +27,42 @@ class HomeCalendar extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
       ),
-      child: CalendarTimeline(
-        width: 70.w,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
-        lastDate: DateTime(DateTime.now().year + 1),
-        onDateSelected: (date) async {
-          context.read<HomeCubit>().updateSelectedDay(date);
-        },
-        monthColor: AppColors.grey,
-        dayColor: AppColors.grey,
-        leftMargin: 5.r,
-        activeDayColor: Colors.white,
-        activeBackgroundDayColor: AppColors.mainBlue,
-        locale: isEnglishLocale() ? 'en_US' : 'ar',
-        fontSize: 18.sp,
-        shrinkFontSize: 16.sp,
-        dayNameFontSize: 12.sp,
+      child: EasyTheme(
+        data: EasyTheme.of(context).copyWithState(
+          selectedDayTheme: const DayThemeData(
+            backgroundColor: AppColors.mainBlue, // اليوم المختار
+          ),
+          unselectedDayTheme: const DayThemeData(
+            backgroundColor: Colors.white, // باقي الأيام
+            foregroundColor: AppColors.black,
+          ),
+          disabledDayTheme: DayThemeData(
+            backgroundColor: Colors.grey.shade200, // الأيام المعطلة
+            foregroundColor: AppColors.black,
+          ),
+          selectedCurrentDayTheme: const DayThemeData(
+            backgroundColor: AppColors.mainBlue, // اليوم الحالي لو مختار
+            border: BorderSide(color: AppColors.wheit),
+          ),
+          unselectedCurrentDayTheme: const DayThemeData(
+            backgroundColor: AppColors.wheit,
+            foregroundColor: AppColors.black,
+            border: BorderSide(color: AppColors.mainBlue),
+          ),
+        ),
+        child: EasyDateTimeLinePicker(
+          headerOptions: HeaderOptions(headerType: HeaderType.none),
+          ignoreUserInteractionOnAnimating: true,
+          firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
+          lastDate: DateTime(DateTime.now().year, DateTime.now().month + 1, 0),
+
+          focusedDate: context.watch<HomeCubit>().dateT,
+          locale: isEnglishLocale() ? Locale('en') : Locale('ar'),
+
+          onDateChange: (date) {
+            context.read<HomeCubit>().updateSelectedDay(date);
+          },
+        ),
       ),
     );
   }

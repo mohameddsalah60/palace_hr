@@ -40,6 +40,7 @@ class SchedulesRepoImpl implements SchedulesRepo {
       }
       return right(SchedulesModel.fromJson(result));
     } catch (e) {
+      log(e.toString());
       return left(ApiErrorHandler.handleError(e));
     }
   }

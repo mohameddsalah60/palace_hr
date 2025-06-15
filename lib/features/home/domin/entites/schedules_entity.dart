@@ -4,7 +4,6 @@ import '../../../../core/helpers/is_english_locale_funcation.dart';
 import '../../data/models/schedules_model.dart';
 
 class SchedulesEntity {
-  final String month;
   final List<DayEntity> days;
 
   DayEntity getScheduleToday({DateTime? date}) {
@@ -24,7 +23,7 @@ class SchedulesEntity {
     );
   }
 
-  SchedulesEntity({required this.month, required this.days});
+  SchedulesEntity({required this.days});
 }
 
 class DayEntity {

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "LoginSuccess": MessageLookupByLibrary.simpleMessage("Login successful"),
+    "Nopenalties": MessageLookupByLibrary.simpleMessage("No penalties 🎉"),
     "accountExistsWithDifferentCredential":
         MessageLookupByLibrary.simpleMessage(
           "An account already exists with a different credential.",
@@ -55,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "This field email is required.",
     ),
+    "excellent": MessageLookupByLibrary.simpleMessage(
+      "Keep it up, your work is excellent!",
+    ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "forgetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
       "Don’t worry, just enter your email and we’ll send you a verification code.",
@@ -74,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "You’ve successfully loggedin ",
     ),
+    "mypenalties": MessageLookupByLibrary.simpleMessage("My penalties"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection.",
     ),

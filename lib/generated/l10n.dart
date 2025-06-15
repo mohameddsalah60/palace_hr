@@ -524,6 +524,36 @@ class S {
       args: [],
     );
   }
+
+  /// `No penalties 🎉`
+  String get Nopenalties {
+    return Intl.message(
+      'No penalties 🎉',
+      name: 'Nopenalties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep it up, your work is excellent!`
+  String get excellent {
+    return Intl.message(
+      'Keep it up, your work is excellent!',
+      name: 'excellent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My penalties`
+  String get mypenalties {
+    return Intl.message(
+      'My penalties',
+      name: 'mypenalties',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

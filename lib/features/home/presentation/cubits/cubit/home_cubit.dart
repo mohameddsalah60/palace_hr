@@ -25,6 +25,7 @@ class HomeCubit extends Cubit<HomeState> {
   SchedulesEntity? schedulesList;
   DayEntity? dayEntity;
   String? face = getUser().faceIdUrl;
+  DateTime dateT = DateTime.now();
 
   final RefreshController refreshController = RefreshController();
   void onRefresh() async {
@@ -47,6 +48,7 @@ class HomeCubit extends Cubit<HomeState> {
     if (schedulesList == null) return;
     dayEntity = schedulesList!.getScheduleToday(date: date);
     final attendance = await homeRepo.getAttendanceIfExists(path: date);
+    dateT = date;
     checkInTime = attendance?.checkIn ?? '--:--:--';
     checkOutTime = attendance?.checkOut ?? '--:--:--';
     emit(HomeStateSuccess(schedules: schedulesList!));

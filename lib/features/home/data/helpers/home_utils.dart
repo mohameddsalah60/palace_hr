@@ -24,19 +24,27 @@ class HomeUtils {
     return "${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}";
   }
 
-  static Future<Map<String, dynamic>?> getData({
+  static getData({
     required DatabaseService databaseService,
     required String path,
     required String docId,
     required String subPath,
-    required String subPathId,
+    String? subPathId,
   }) async {
-    return await databaseService.getData(
-      path: path,
-      uId: docId,
-      subPath: subPath,
-      subPathId: subPathId,
-    );
+    if (subPathId != null) {
+      return await databaseService.getData(
+        path: path,
+        uId: docId,
+        subPath: subPath,
+        subPathId: subPathId,
+      );
+    } else {
+      return await databaseService.getData(
+        path: path,
+        uId: docId,
+        subPath: subPath,
+      );
+    }
   }
 
   static Future<void> addData({

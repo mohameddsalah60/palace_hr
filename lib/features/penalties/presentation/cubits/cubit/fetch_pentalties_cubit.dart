@@ -7,9 +7,9 @@ part 'fetch_pentalties_state.dart';
 class FetchPenaltiesCubit extends Cubit<FetchPentaltiesState> {
   FetchPenaltiesCubit(this.penaltiesRepo) : super(FetchPentaltiesInitial());
   final PenaltiesRepo penaltiesRepo;
-  fetchPenalties() async {
+  fetchPenalties({DateTime? sort}) async {
     emit(FetchPentaltiesLoading());
-    final result = await penaltiesRepo.fetchUserPenalty();
+    final result = await penaltiesRepo.fetchUserPenalty(sort: sort);
     result.fold(
       (failure) {
         emit(FetchPentaltiesFailure(message: failure.errMessage));

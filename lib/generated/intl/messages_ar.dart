@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "LoginSuccess": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
+    "Nopenalties": MessageLookupByLibrary.simpleMessage("مفيش أي عقوبات 🎉"),
     "accountExistsWithDifferentCredential":
         MessageLookupByLibrary.simpleMessage(
           "يوجد حساب بنفس البريد ولكن بمصدر تسجيل مختلف.",
@@ -57,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "حقل البريد الإلكتروني مطلوب.",
     ),
+    "excellent": MessageLookupByLibrary.simpleMessage(
+      "استمر في الالتزام، شغلك ممتاز!",
+    ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
       "لا تقلق، فقط أدخل بريدك الإلكتروني وسنرسل لك رمز تحقق.",
@@ -76,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "سجلت دخولك بنجاح",
     ),
+    "mypenalties": MessageLookupByLibrary.simpleMessage("خصوماتي"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت.",
     ),

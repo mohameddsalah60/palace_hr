@@ -52,37 +52,46 @@ class FirestoreService implements DatabaseService {
       return data.data();
     }
     if (uId != null && subPath != null) {
-      var data =
-          await firestoreService
-              .collection(path)
-              .doc(uId)
-              .collection(subPath)
-              .get();
-      return data.docs.map((e) => e.data()).toList();
-    }
+      Query<Map<String, dynamic>> data = firestoreService
+          .collection(path)
+          .doc(uId)
+          .collection(subPath);
 
-    if (uId != null) {
-      // جلب مستند مباشر
-      var data = await firestoreService.collection(path).doc(uId).get();
-      return data.data();
-    }
+      if (query != null) {
+        if (query['orderBy'] != null && query['where'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'] ?? false;
+          var whereField = query['where'];
+          var isEqualTo = query['isEqualTo'];
 
-    // جلب بيانات من مجموعة بدون uId
-    Query<Map<String, dynamic>> data = firestoreService.collection(path);
-    if (query != null) {
-      if (query['where'] != null) {
-        var whereField = query['where'];
-        var isEqualTo = query['isEqualTo'];
-        data = data.where(whereField, isEqualTo: isEqualTo);
+          data = data
+              .where(whereField, isEqualTo: isEqualTo)
+              .orderBy(orderByField, descending: descending);
+        }
+        if (query['where'] != null) {
+          var whereField = query['where'];
+          var isEqualTo = query['isEqualTo'];
+          data = data.where(whereField, isEqualTo: isEqualTo);
+        }
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'] ?? false;
+          data = data.orderBy(orderByField, descending: descending);
+        }
+        if (query['whereRange'] != null) {
+          var range = query['whereRange'];
+          var field = range['field'];
+          var isGreaterThanOrEqualTo = range['isGreaterThanOrEqualTo'];
+          var isLessThan = range['isLessThan'];
+          data = data
+              .where(field, isGreaterThanOrEqualTo: isGreaterThanOrEqualTo)
+              .where(field, isLessThan: isLessThan);
+        }
       }
-      if (query['orderBy'] != null) {
-        var orderByField = query['orderBy'];
-        var descending = query['descending'] ?? false;
-        data = data.orderBy(orderByField, descending: descending);
-      }
+
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
-    var result = await data.get();
-    return result.docs.map((e) => e.data()).toList();
   }
 
   @override
