@@ -102,11 +102,20 @@ class FirestoreService implements DatabaseService {
     Map<String, dynamic>? query,
   }) async* {
     try {
-      // الحالة 3: لا يوجد uId ولا subPath
-      Query<Map<String, dynamic>> collectionRef = firestoreService.collection(
-        path,
-      );
+      Query<Map<String, dynamic>> collectionRef;
 
+      if (uId != null && subPath != null) {
+        // ✅ الحالة دي تخصك: subcollection جوه document
+        collectionRef = firestoreService
+            .collection(path)
+            .doc(uId)
+            .collection(subPath);
+      } else {
+        // fallback لحالة collection عادية
+        collectionRef = firestoreService.collection(path);
+      }
+
+      // ✅ تطبيق الفلاتر لو موجودة
       if (query != null) {
         if (query['where'] != null && query['isEqualTo'] != null) {
           collectionRef = collectionRef.where(
@@ -122,8 +131,10 @@ class FirestoreService implements DatabaseService {
           );
         }
       }
-      await for (var result in collectionRef.snapshots()) {
-        yield result.docs.map((e) => e.data()).toList();
+
+      // ✅ الاستماع للتغييرات
+      await for (var snapshot in collectionRef.snapshots()) {
+        yield snapshot.docs.map((doc) => doc.data()).toList();
       }
     } catch (e) {
       yield* Stream.error(e);
@@ -162,7 +173,22 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<void> deleteData({required String path, required String uId}) async {
+  Future<void> deleteData({
+    required String path,
+    String? uId,
+    String? subPath,
+    String? subPathId,
+  }) async {
+    if (uId != null && subPath != null && subPathId != null) {
+      await firestoreService
+          .collection(path)
+          .doc(uId)
+          .collection(subPath)
+          .doc(subPathId)
+          .delete();
+      return;
+    }
+
     await firestoreService.collection(path).doc(uId).delete();
   }
 }

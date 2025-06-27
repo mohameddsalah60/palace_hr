@@ -136,4 +136,8 @@ abstract class ErrorMessages {
       isEnglishLocale()
           ? "You are outside the working area"
           : "انت خارج منطقة العمل";
+  static String get requestAlreadyCreate =>
+      isEnglishLocale()
+          ? "You have already created a request for today"
+          : 'لقد قمت بإنشاء طلب بالفعل لهذا اليوم';
 }

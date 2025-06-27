@@ -56,7 +56,21 @@
 "uploadedImage": "Image uploaded successfully",
 "Nopenalties": "No penalties 🎉",
 "excellent": "Keep it up, your work is excellent!",
-"mypenalties": "My penalties"
+"mypenalties": "My Penalties",
+"myrequest": "My Requests",
+"newRequest": "New Request",
+"permissions": "Permissions",
+"annualLeave": "Annoul Leave",
+"sickLeave": "Sick Leave",
+"requestDetails": "Request Details",
+"selectRequestType": "Select Request Type",
+"selectDate": "Select Date",
+"fromTime": "From Time",
+"toTime": "To Time",
+"additionalNotes": "Additional Notes (Optional)",
+"uploadAttachment": "Upload Attachment (Optional)",
+"submitRequest": "Submit Request",  "requestSentSuccessfully": "Your request was sent successfully.","noRequestsMessage":"You haven't submitted any requests yet."
+
 
   }
   

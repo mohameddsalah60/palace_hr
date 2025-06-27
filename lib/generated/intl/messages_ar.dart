@@ -30,7 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "يوجد حساب بنفس البريد ولكن بمصدر تسجيل مختلف.",
         ),
+    "additionalNotes": MessageLookupByLibrary.simpleMessage(
+      "ملاحظات إضافية (اختياري)",
+    ),
     "andWord": MessageLookupByLibrary.simpleMessage(" و "),
+    "annualLeave": MessageLookupByLibrary.simpleMessage("إجازة سنوية"),
     "appDescription": MessageLookupByLibrary.simpleMessage(
       "بالاس اتش ار هو نظام شامل لإدارة الموارد البشرية مصمم لتبسيط عمليات الموارد البشرية وتعزيز مشاركة الموظفين.",
     ),
@@ -66,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا تقلق، فقط أدخل بريدك الإلكتروني وسنرسل لك رمز تحقق.",
     ),
     "forgetPassword_": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
+    "fromTime": MessageLookupByLibrary.simpleMessage("من الساعة"),
     "genericErrorMessage": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما، برجاء المحاولة مرة أخرى.",
     ),
@@ -81,11 +86,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "سجلت دخولك بنجاح",
     ),
     "mypenalties": MessageLookupByLibrary.simpleMessage("خصوماتي"),
+    "myrequest": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت.",
     ),
+    "newRequest": MessageLookupByLibrary.simpleMessage("طلب جديد"),
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت. تحقق من الاتصال.",
+    ),
+    "noRequestsMessage": MessageLookupByLibrary.simpleMessage(
+      "لم تقم بتقديم أي طلب حتى الآن.",
     ),
     "ok": MessageLookupByLibrary.simpleMessage("اوكي"),
     "palaceHR": MessageLookupByLibrary.simpleMessage("بالاس اتش ار"),
@@ -111,10 +121,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "على الأقل حرف كبير واحد",
     ),
+    "permissions": MessageLookupByLibrary.simpleMessage("اذونات"),
     "present": MessageLookupByLibrary.simpleMessage("الحضور"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "سياسة الخصوصية.",
     ),
+    "requestDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
+    "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال الطلب بنجاح.",
+    ),
+    "selectDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
+    "selectRequestType": MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
     "selfieRequestBody": MessageLookupByLibrary.simpleMessage(
       "دلوقتي محتاجين صورة سيلفي سريعة عشان نعرفك أكتر ونسهّل عملية تسجيل الدخول.",
     ),
@@ -122,13 +139,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "خطأ في الخادم. حاول لاحقًا.",
     ),
+    "sickLeave": MessageLookupByLibrary.simpleMessage("إجازة مرضية"),
     "startButton": MessageLookupByLibrary.simpleMessage("📸   ابدأ"),
+    "submitRequest": MessageLookupByLibrary.simpleMessage("إرسال الطلب"),
     "termsIntro": MessageLookupByLibrary.simpleMessage(
       "بتسجيل الدخول، أنت توافق على ",
     ),
     "termsTitle": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+    "toTime": MessageLookupByLibrary.simpleMessage("إلى الساعة"),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "دخول غير مصرح به. يرجى تسجيل الدخول مرة أخرى.",
+    ),
+    "uploadAttachment": MessageLookupByLibrary.simpleMessage(
+      "رفع مرفق (اختياري)",
     ),
     "uploadedImage": MessageLookupByLibrary.simpleMessage(
       "تم رفع الصوره بنجاح",

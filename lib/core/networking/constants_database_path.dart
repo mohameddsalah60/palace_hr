@@ -9,4 +9,5 @@ class ConstantsDatabasePath {
   static const String getUserSchedule = 'schedules';
   static const String getUserAttendence = 'Attendance';
   static const String getUserMyPenalties = 'MyPenalties';
+  static const String addUserRequest = 'Requests';
 }

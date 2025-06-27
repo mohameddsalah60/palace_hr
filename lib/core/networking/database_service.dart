@@ -30,5 +30,10 @@ abstract class DatabaseService {
     required String uId,
     required Map<String, dynamic> value,
   });
-  Future<void> deleteData({required String path, required String uId});
+  Future<void> deleteData({
+    required String path,
+    String? uId,
+    String? subPath,
+    String? subPathId,
+  });
 }

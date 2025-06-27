@@ -16,9 +16,12 @@ import 'package:palace_hr/features/home/domin/repos/home_repo.dart';
 import 'package:palace_hr/features/home/domin/repos/schedules_repo.dart';
 import 'package:palace_hr/features/penalties/app/penalty_handler.dart';
 import 'package:palace_hr/features/penalties/domin/repo/penalties_repo.dart';
+import 'package:palace_hr/features/requests/app/request_handler.dart';
+import 'package:palace_hr/features/requests/domin/repo/request_repo.dart';
 
 import '../../features/home/data/repos/face_recognition_repo_impl.dart';
 import '../../features/penalties/data/repos/penalties_repo_impl.dart';
+import '../../features/requests/data/repos/request_repo_impl.dart';
 import '../networking/auth_service.dart';
 import '../networking/database_service.dart';
 
@@ -56,6 +59,12 @@ Future<void> setup() async {
       databaseService: getIt<DatabaseService>(),
     ),
   );
+  getIt.registerSingleton<RequestRepo>(
+    RequestRepoImpl(
+      storageService: getIt<StorageService>(),
+      databaseService: getIt<DatabaseService>(),
+    ),
+  );
   getIt.registerSingleton<SchedulesRepo>(
     SchedulesRepoImpl(databaseService: getIt<DatabaseService>()),
   );
@@ -70,6 +79,7 @@ Future<void> setup() async {
       storageService: getIt<StorageService>(),
       databaseService: getIt<DatabaseService>(),
       penaltyHandler: getIt<PenaltyHandler>(),
+      requestHandler: RequestHandler(repo: getIt<RequestRepo>()),
     ),
   );
 }

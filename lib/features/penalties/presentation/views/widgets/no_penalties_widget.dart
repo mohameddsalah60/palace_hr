@@ -8,21 +8,21 @@ class NoPenaltiesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 40.h),
-        child: TweenAnimationBuilder<double>(
-          duration: Duration(milliseconds: 600),
-          tween: Tween(begin: 0, end: 1),
-          builder: (context, value, child) {
-            return Opacity(
-              opacity: value,
-              child: Transform.translate(
-                offset: Offset(0, (1 - value) * 20),
-                child: child,
-              ),
-            );
-          },
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 40.h),
+      child: TweenAnimationBuilder<double>(
+        duration: Duration(milliseconds: 600),
+        tween: Tween(begin: 0, end: 1),
+        builder: (context, value, child) {
+          return Opacity(
+            opacity: value,
+            child: Transform.translate(
+              offset: Offset(0, (1 - value) * 20),
+              child: child,
+            ),
+          );
+        },
+        child: Center(
           child: Container(
             padding: EdgeInsets.all(24.w),
             decoration: BoxDecoration(

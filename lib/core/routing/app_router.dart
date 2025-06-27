@@ -4,6 +4,7 @@ import 'package:palace_hr/features/auth/presentation/views/forget_password_view.
 import 'package:palace_hr/features/auth/presentation/views/sign_in_view.dart';
 import 'package:palace_hr/features/home/presentation/views/home_view.dart';
 import 'package:palace_hr/features/penalties/presentation/views/my_penalties_view.dart';
+import 'package:palace_hr/features/requests/presentation/views/user_request_view.dart';
 
 import '../../features/penalties/domin/repo/penalties_repo.dart';
 import '../../features/penalties/presentation/cubits/cubit/fetch_pentalties_cubit.dart';
@@ -30,6 +31,8 @@ class AppRouter {
                 child: const MyPenaltiesView(),
               ),
         );
+      case AppRoutes.request:
+        return MaterialPageRoute(builder: (context) => const UserRequestView());
 
       default:
         return MaterialPageRoute(

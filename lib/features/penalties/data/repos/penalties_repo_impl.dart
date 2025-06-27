@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:palace_hr/core/errors/api_error_model.dart';
 import 'package:palace_hr/core/helpers/get_user.dart';
@@ -31,9 +30,7 @@ class PenaltiesRepoImpl implements PenaltiesRepo {
           PenaltyModel.fromEntity(penalty).toMap();
 
       await databaseService.addData(
-        data: {
-          "penalties": FieldValue.arrayUnion([penaltyModel]),
-        },
+        data: penaltyModel,
         path: ConstantsDatabasePath.getUserData,
         docId: getUser().email,
         subPath: ConstantsDatabasePath.getUserMyPenalties,

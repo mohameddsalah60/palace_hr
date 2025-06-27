@@ -6,11 +6,7 @@ final class FetchPentaltiesInitial extends FetchPentaltiesState {}
 
 final class FetchPentaltiesLoading extends FetchPentaltiesState {}
 
-final class FetchPentaltiesSuccess extends FetchPentaltiesState {
-  final List<PenaltyEntity> penalties;
-
-  FetchPentaltiesSuccess({required this.penalties});
-}
+final class FetchPentaltiesSuccess extends FetchPentaltiesState {}
 
 final class FetchPentaltiesFailure extends FetchPentaltiesState {
   final String message;

@@ -5,4 +5,5 @@ class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String home = '/home';
   static const String penalteis = '/penalteis';
+  static const String request = '/request';
 }

@@ -545,11 +545,126 @@ class S {
     );
   }
 
-  /// `My penalties`
+  /// `My Penalties`
   String get mypenalties {
     return Intl.message(
-      'My penalties',
+      'My Penalties',
       name: 'mypenalties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Requests`
+  String get myrequest {
+    return Intl.message('My Requests', name: 'myrequest', desc: '', args: []);
+  }
+
+  /// `New Request`
+  String get newRequest {
+    return Intl.message('New Request', name: 'newRequest', desc: '', args: []);
+  }
+
+  /// `Permissions`
+  String get permissions {
+    return Intl.message('Permissions', name: 'permissions', desc: '', args: []);
+  }
+
+  /// `Annoul Leave`
+  String get annualLeave {
+    return Intl.message(
+      'Annoul Leave',
+      name: 'annualLeave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sick Leave`
+  String get sickLeave {
+    return Intl.message('Sick Leave', name: 'sickLeave', desc: '', args: []);
+  }
+
+  /// `Request Details`
+  String get requestDetails {
+    return Intl.message(
+      'Request Details',
+      name: 'requestDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Request Type`
+  String get selectRequestType {
+    return Intl.message(
+      'Select Request Type',
+      name: 'selectRequestType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Date`
+  String get selectDate {
+    return Intl.message('Select Date', name: 'selectDate', desc: '', args: []);
+  }
+
+  /// `From Time`
+  String get fromTime {
+    return Intl.message('From Time', name: 'fromTime', desc: '', args: []);
+  }
+
+  /// `To Time`
+  String get toTime {
+    return Intl.message('To Time', name: 'toTime', desc: '', args: []);
+  }
+
+  /// `Additional Notes (Optional)`
+  String get additionalNotes {
+    return Intl.message(
+      'Additional Notes (Optional)',
+      name: 'additionalNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Attachment (Optional)`
+  String get uploadAttachment {
+    return Intl.message(
+      'Upload Attachment (Optional)',
+      name: 'uploadAttachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit Request`
+  String get submitRequest {
+    return Intl.message(
+      'Submit Request',
+      name: 'submitRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request was sent successfully.`
+  String get requestSentSuccessfully {
+    return Intl.message(
+      'Your request was sent successfully.',
+      name: 'requestSentSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't submitted any requests yet.`
+  String get noRequestsMessage {
+    return Intl.message(
+      'You haven\'t submitted any requests yet.',
+      name: 'noRequestsMessage',
       desc: '',
       args: [],
     );

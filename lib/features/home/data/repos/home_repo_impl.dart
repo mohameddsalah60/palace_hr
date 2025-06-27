@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
@@ -11,6 +12,7 @@ import 'package:palace_hr/features/home/data/models/attendance_model.dart';
 import 'package:palace_hr/features/home/domin/entites/attendance_entity.dart';
 import 'package:palace_hr/features/home/domin/entites/schedules_entity.dart';
 import 'package:palace_hr/features/penalties/app/penalty_handler.dart';
+import 'package:palace_hr/features/requests/app/request_handler.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/errors/errors_messages.dart';
@@ -23,11 +25,13 @@ class HomeRepoImpl implements HomeRepo {
   final DatabaseService databaseService;
   final LocationService locationService;
   final PenaltyHandler penaltyHandler;
+  final RequestHandler requestHandler;
   HomeRepoImpl({
     required this.locationService,
     required this.storageService,
     required this.databaseService,
     required this.penaltyHandler,
+    required this.requestHandler,
   });
 
   @override
@@ -109,12 +113,16 @@ class HomeRepoImpl implements HomeRepo {
       final existingAttendance = await getAttendanceIfExists(path: dateTime);
       if (existingAttendance == null) {
         return left(ServerFailure(errMessage: ErrorMessages.notCheckedIn));
-      } else if (existingAttendance.checkOut != null) {
+      } else if (existingAttendance.checkOut != '') {
         return left(ServerFailure(errMessage: ErrorMessages.alreadyCheckedOut));
-      } else if (dateTime.isBefore(now)) {
+      } else if (now.isBefore(dateTime)) {
         return left(
           ServerFailure(errMessage: ErrorMessages.insideWorkingHours),
         );
+      } else if (now.isAfter(dateTime)) {
+        final difference = DateTime.now().difference(dateTime);
+        await requestHandler.addRequestOverTime(dateTime);
+        log(difference.inMinutes.toString());
       }
 
       existingAttendance.checkOut = "${now.hour}:${now.minute}:${now.second}";

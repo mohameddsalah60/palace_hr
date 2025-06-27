@@ -28,7 +28,11 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "An account already exists with a different credential.",
         ),
+    "additionalNotes": MessageLookupByLibrary.simpleMessage(
+      "Additional Notes (Optional)",
+    ),
     "andWord": MessageLookupByLibrary.simpleMessage(" and "),
+    "annualLeave": MessageLookupByLibrary.simpleMessage("Annoul Leave"),
     "appDescription": MessageLookupByLibrary.simpleMessage(
       "Palace HR is a comprehensive human resources management system designed to streamline HR processes and enhance employee engagement.",
     ),
@@ -64,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don’t worry, just enter your email and we’ll send you a verification code.",
     ),
     "forgetPassword_": MessageLookupByLibrary.simpleMessage("Forget Password"),
+    "fromTime": MessageLookupByLibrary.simpleMessage("From Time"),
     "genericErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
     ),
@@ -78,12 +83,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "You’ve successfully loggedin ",
     ),
-    "mypenalties": MessageLookupByLibrary.simpleMessage("My penalties"),
+    "mypenalties": MessageLookupByLibrary.simpleMessage("My Penalties"),
+    "myrequest": MessageLookupByLibrary.simpleMessage("My Requests"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection.",
     ),
+    "newRequest": MessageLookupByLibrary.simpleMessage("New Request"),
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "No internet connection. Please check your connection.",
+    ),
+    "noRequestsMessage": MessageLookupByLibrary.simpleMessage(
+      "You haven\'t submitted any requests yet.",
     ),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "palaceHR": MessageLookupByLibrary.simpleMessage("Palace Hotel HR"),
@@ -107,9 +117,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "At least 1 uppercase letter",
     ),
+    "permissions": MessageLookupByLibrary.simpleMessage("Permissions"),
     "present": MessageLookupByLibrary.simpleMessage("Present"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "Privacy Policy.",
+    ),
+    "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
+    "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Your request was sent successfully.",
+    ),
+    "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "selectRequestType": MessageLookupByLibrary.simpleMessage(
+      "Select Request Type",
     ),
     "selfieRequestBody": MessageLookupByLibrary.simpleMessage(
       "We need a quick selfie to recognize you and simplify the login process.",
@@ -118,13 +137,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Server error. Please try again later.",
     ),
+    "sickLeave": MessageLookupByLibrary.simpleMessage("Sick Leave"),
     "startButton": MessageLookupByLibrary.simpleMessage("Start   📸"),
+    "submitRequest": MessageLookupByLibrary.simpleMessage("Submit Request"),
     "termsIntro": MessageLookupByLibrary.simpleMessage(
       "By logging, you agree to our ",
     ),
     "termsTitle": MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+    "toTime": MessageLookupByLibrary.simpleMessage("To Time"),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "Unauthorized access. Please log in again.",
+    ),
+    "uploadAttachment": MessageLookupByLibrary.simpleMessage(
+      "Upload Attachment (Optional)",
     ),
     "uploadedImage": MessageLookupByLibrary.simpleMessage(
       "Image uploaded successfully",
