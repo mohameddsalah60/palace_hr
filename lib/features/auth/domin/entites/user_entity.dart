@@ -8,6 +8,7 @@ class UserEntity {
   String token;
   final String jobTitle;
   final String? offDay;
+  final bool? isAdmin;
 
   UserEntity({
     required this.jobTitle,
@@ -15,6 +16,7 @@ class UserEntity {
     this.countPermission = 3,
     this.countAnnualDays = 22,
     this.faceIdUrl = '',
+    this.isAdmin = false,
     required this.name,
     required this.email,
     required this.phone,

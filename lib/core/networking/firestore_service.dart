@@ -41,6 +41,11 @@ class FirestoreService implements DatabaseService {
     String? subPathId,
     Map<String, dynamic>? query,
   }) async {
+    if (uId != null && subPath == null) {
+      var data = await firestoreService.collection(path).doc(uId).get();
+      return data.data();
+    }
+
     if (uId != null && subPath != null && subPathId != null) {
       var data =
           await firestoreService
@@ -51,6 +56,7 @@ class FirestoreService implements DatabaseService {
               .get();
       return data.data();
     }
+
     if (uId != null && subPath != null) {
       Query<Map<String, dynamic>> data = firestoreService
           .collection(path)
@@ -103,19 +109,15 @@ class FirestoreService implements DatabaseService {
   }) async* {
     try {
       Query<Map<String, dynamic>> collectionRef;
-
       if (uId != null && subPath != null) {
-        // ✅ الحالة دي تخصك: subcollection جوه document
         collectionRef = firestoreService
             .collection(path)
             .doc(uId)
             .collection(subPath);
       } else {
-        // fallback لحالة collection عادية
         collectionRef = firestoreService.collection(path);
       }
 
-      // ✅ تطبيق الفلاتر لو موجودة
       if (query != null) {
         if (query['where'] != null && query['isEqualTo'] != null) {
           collectionRef = collectionRef.where(
@@ -132,7 +134,6 @@ class FirestoreService implements DatabaseService {
         }
       }
 
-      // ✅ الاستماع للتغييرات
       await for (var snapshot in collectionRef.snapshots()) {
         yield snapshot.docs.map((doc) => doc.data()).toList();
       }

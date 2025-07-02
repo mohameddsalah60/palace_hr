@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:palace_hr/features/penalties/presentation/cubits/cubit/fetch_pentalties_cubit.dart';
+import 'package:palace_hr/generated/l10n.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
@@ -16,7 +17,10 @@ class MyPenaltiesHeader extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.all(0),
       titleAlignment: ListTileTitleAlignment.center,
-      title: Text('My Penalties', style: AppTextStyles.fontWeight700Size16),
+      title: Text(
+        S.of(context).mypenalties,
+        style: AppTextStyles.fontWeight700Size16,
+      ),
       trailing: GestureDetector(
         onTap: () async {
           DateTime? time = await customMonthYearPicker(context);

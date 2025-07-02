@@ -22,10 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Account": MessageLookupByLibrary.simpleMessage("حساب"),
+    "General": MessageLookupByLibrary.simpleMessage("عام"),
     "LoginSuccess": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
     "Nopenalties": MessageLookupByLibrary.simpleMessage("مفيش أي عقوبات 🎉"),
+    "aboutApp": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
+    "aboutAppDescription": MessageLookupByLibrary.simpleMessage(
+      "تطبيق يساعد الموظف على متابعة حضوره، طلباته، وتنبيهاته بطريقة سهلة وسريعة، مع واجهة بسيطة وتجربة مستخدم سلسة.",
+    ),
+    "aboutAppTitle": MessageLookupByLibrary.simpleMessage(
+      "بالاس HR | إدارة الموارد البشرية",
+    ),
     "accountExistsWithDifferentCredential":
         MessageLookupByLibrary.simpleMessage(
           "يوجد حساب بنفس البريد ولكن بمصدر تسجيل مختلف.",
@@ -39,12 +48,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "بالاس اتش ار هو نظام شامل لإدارة الموارد البشرية مصمم لتبسيط عمليات الموارد البشرية وتعزيز مشاركة الموظفين.",
     ),
     "appVersion": MessageLookupByLibrary.simpleMessage("الإصدار 1.0.0"),
+    "appVersion_": MessageLookupByLibrary.simpleMessage(
+      "الإصدار 1.0.0 • تم التطوير بواسطة فريق Palace HR",
+    ),
     "attendanceToday": MessageLookupByLibrary.simpleMessage("الحضور اليوم"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء عملية تسجيل الدخول.",
     ),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("تغير اللغة"),
     "checkIn": MessageLookupByLibrary.simpleMessage("الدخول"),
     "checkOut": MessageLookupByLibrary.simpleMessage("الخروج"),
+    "confirmDeleteContent": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد حذف حسابك بشكل دائم؟ لا يمكن التراجع عن هذا الإجراء.",
+    ),
+    "confirmDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "تأكيد حذف الحساب",
+    ),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+    "deleteAccountPrompt": MessageLookupByLibrary.simpleMessage(
+      "هل ترغب في حذف حسابك؟",
+    ),
     "departure": MessageLookupByLibrary.simpleMessage("الانصراف"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
@@ -56,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
       "من فضلك أدخل بريدًا إلكترونيًا صالحًا.",
     ),
+    "emailLabel": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailNotFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على البريد الإلكتروني، يرجى التواصل مع إدارة Palace HR",
     ),
@@ -64,6 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "excellent": MessageLookupByLibrary.simpleMessage(
       "استمر في الالتزام، شغلك ممتاز!",
+    ),
+    "feature1": MessageLookupByLibrary.simpleMessage(
+      "🕒 سجل حضورك وانصرافك يوميًا بسهولة.",
+    ),
+    "feature2": MessageLookupByLibrary.simpleMessage(
+      "📤 أرسل طلبات الإجازة أو المهام بنقرة واحدة.",
+    ),
+    "feature3": MessageLookupByLibrary.simpleMessage(
+      "📄 تتبع حالة الطلبات الخاصة بك في الوقت الفعلي.",
+    ),
+    "feature4": MessageLookupByLibrary.simpleMessage(
+      "🔔 استلم تنبيهات فورية لأي تغييرات.",
+    ),
+    "feature5": MessageLookupByLibrary.simpleMessage(
+      "🔒 حماية وأمان كاملين لمعلوماتك الشخصية.",
     ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
@@ -80,11 +121,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال بريد إلكتروني صحيح.",
     ),
+    "jobTitleLabel": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
     "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل...."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "سجلت دخولك بنجاح",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "mypenalties": MessageLookupByLibrary.simpleMessage("خصوماتي"),
     "myrequest": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
@@ -122,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "على الأقل حرف كبير واحد",
     ),
     "permissions": MessageLookupByLibrary.simpleMessage("اذونات"),
+    "phoneLabel": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "present": MessageLookupByLibrary.simpleMessage("الحضور"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "سياسة الخصوصية.",
@@ -139,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "خطأ في الخادم. حاول لاحقًا.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sickLeave": MessageLookupByLibrary.simpleMessage("إجازة مرضية"),
     "startButton": MessageLookupByLibrary.simpleMessage("📸   ابدأ"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("إرسال الطلب"),
@@ -160,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "لا يوجد حساب بهذا البريد الإلكتروني.",
     ),
+    "userProfile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "verificationCodeSent": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
     ),

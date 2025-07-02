@@ -16,6 +16,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   faceIdUrl: json['faceIdUrl'] as String? ?? '',
   jobTitle: json['jobTitle'] as String,
   offDay: json['offDay'] as String?,
+  isAdmin: json['isAdmin'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -28,4 +29,5 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'token': instance.token,
   'jobTitle': instance.jobTitle,
   'offDay': instance.offDay,
+  'isAdmin': instance.isAdmin,
 };

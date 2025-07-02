@@ -5,6 +5,9 @@ import 'package:palace_hr/features/auth/presentation/views/sign_in_view.dart';
 import 'package:palace_hr/features/home/presentation/views/home_view.dart';
 import 'package:palace_hr/features/penalties/presentation/views/my_penalties_view.dart';
 import 'package:palace_hr/features/requests/presentation/views/user_request_view.dart';
+import 'package:palace_hr/features/settings/presentation/views/about_app.dart';
+import 'package:palace_hr/features/settings/presentation/views/profile_user_setting.dart';
+import 'package:palace_hr/features/settings/presentation/views/settings_view.dart';
 
 import '../../features/penalties/domin/repo/penalties_repo.dart';
 import '../../features/penalties/presentation/cubits/cubit/fetch_pentalties_cubit.dart';
@@ -33,6 +36,12 @@ class AppRouter {
         );
       case AppRoutes.request:
         return MaterialPageRoute(builder: (context) => const UserRequestView());
+      case AppRoutes.settings:
+        return MaterialPageRoute(builder: (context) => const SettingsView());
+      case AppRoutes.aboutApp:
+        return MaterialPageRoute(builder: (context) => const AboutAppPage());
+      case AppRoutes.profile:
+        return MaterialPageRoute(builder: (context) => const UserProfilePage());
 
       default:
         return MaterialPageRoute(

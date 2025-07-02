@@ -34,7 +34,8 @@ class PenaltiesRepoImpl implements PenaltiesRepo {
         path: ConstantsDatabasePath.getUserData,
         docId: getUser().email,
         subPath: ConstantsDatabasePath.getUserMyPenalties,
-        subPathDocId: "${penalty.date.year}-${penalty.date.month}",
+        subPathDocId:
+            "${penalty.date.year}-${penalty.date.month}--${penalty.date.day}-${penalty.title}",
       );
 
       return right(null);

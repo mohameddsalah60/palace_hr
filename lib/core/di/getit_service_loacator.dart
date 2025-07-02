@@ -18,6 +18,8 @@ import 'package:palace_hr/features/penalties/app/penalty_handler.dart';
 import 'package:palace_hr/features/penalties/domin/repo/penalties_repo.dart';
 import 'package:palace_hr/features/requests/app/request_handler.dart';
 import 'package:palace_hr/features/requests/domin/repo/request_repo.dart';
+import 'package:palace_hr/features/settings/data/repos/log_out_user_repo_impl.dart';
+import 'package:palace_hr/features/settings/domin/repos/log_out_user_repo.dart';
 
 import '../../features/home/data/repos/face_recognition_repo_impl.dart';
 import '../../features/penalties/data/repos/penalties_repo_impl.dart';
@@ -81,5 +83,9 @@ Future<void> setup() async {
       penaltyHandler: getIt<PenaltyHandler>(),
       requestHandler: RequestHandler(repo: getIt<RequestRepo>()),
     ),
+  );
+
+  getIt.registerSingleton<LogOutUserRepo>(
+    LogOutUserRepoImpl(authService: getIt<AuthService>()),
   );
 }

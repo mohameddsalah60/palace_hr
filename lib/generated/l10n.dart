@@ -669,6 +669,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `General`
+  String get General {
+    return Intl.message('General', name: 'General', desc: '', args: []);
+  }
+
+  /// `Account`
+  String get Account {
+    return Intl.message('Account', name: 'Account', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Change Language`
+  String get changeLanguage {
+    return Intl.message(
+      'Change Language',
+      name: 'changeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About the App`
+  String get aboutApp {
+    return Intl.message('About the App', name: 'aboutApp', desc: '', args: []);
+  }
+
+  /// `Palace HR | Human Resources Management`
+  String get aboutAppTitle {
+    return Intl.message(
+      'Palace HR | Human Resources Management',
+      name: 'aboutAppTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An app that helps employees track attendance, submit requests, and receive notifications easily with a simple UI and smooth UX.`
+  String get aboutAppDescription {
+    return Intl.message(
+      'An app that helps employees track attendance, submit requests, and receive notifications easily with a simple UI and smooth UX.',
+      name: 'aboutAppDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🕒 Easily log your daily check-ins and check-outs.`
+  String get feature1 {
+    return Intl.message(
+      '🕒 Easily log your daily check-ins and check-outs.',
+      name: 'feature1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📤 Submit leave or task requests in one tap.`
+  String get feature2 {
+    return Intl.message(
+      '📤 Submit leave or task requests in one tap.',
+      name: 'feature2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📄 Track the status of your requests in real time.`
+  String get feature3 {
+    return Intl.message(
+      '📄 Track the status of your requests in real time.',
+      name: 'feature3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔔 Receive instant alerts for any updates.`
+  String get feature4 {
+    return Intl.message(
+      '🔔 Receive instant alerts for any updates.',
+      name: 'feature4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔒 Full protection and privacy of your data.`
+  String get feature5 {
+    return Intl.message(
+      '🔒 Full protection and privacy of your data.',
+      name: 'feature5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Want to delete your account?`
+  String get deleteAccountPrompt {
+    return Intl.message(
+      'Want to delete your account?',
+      name: 'deleteAccountPrompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Account Deletion`
+  String get confirmDeleteTitle {
+    return Intl.message(
+      'Confirm Account Deletion',
+      name: 'confirmDeleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to permanently delete your account? This action cannot be undone.`
+  String get confirmDeleteContent {
+    return Intl.message(
+      'Are you sure you want to permanently delete your account? This action cannot be undone.',
+      name: 'confirmDeleteContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Version 1.0.0 • Developed by Palace HR Team`
+  String get appVersion_ {
+    return Intl.message(
+      'Version 1.0.0 • Developed by Palace HR Team',
+      name: 'appVersion_',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Profile`
+  String get userProfile {
+    return Intl.message(
+      'User Profile',
+      name: 'userProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get emailLabel {
+    return Intl.message('Email', name: 'emailLabel', desc: '', args: []);
+  }
+
+  /// `Phone Number`
+  String get phoneLabel {
+    return Intl.message('Phone Number', name: 'phoneLabel', desc: '', args: []);
+  }
+
+  /// `Job Title`
+  String get jobTitleLabel {
+    return Intl.message('Job Title', name: 'jobTitleLabel', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

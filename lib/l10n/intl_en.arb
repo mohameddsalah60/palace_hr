@@ -69,7 +69,32 @@
 "toTime": "To Time",
 "additionalNotes": "Additional Notes (Optional)",
 "uploadAttachment": "Upload Attachment (Optional)",
-"submitRequest": "Submit Request",  "requestSentSuccessfully": "Your request was sent successfully.","noRequestsMessage":"You haven't submitted any requests yet."
+"submitRequest": "Submit Request",  "requestSentSuccessfully": "Your request was sent successfully.","noRequestsMessage":"You haven't submitted any requests yet.",
+"settings": "Settings",
+"General":"General",
+"Account":"Account",
+"logout":"Logout",
+"changeLanguage":"Change Language",
+"aboutApp": "About the App",
+"aboutAppTitle": "Palace HR | Human Resources Management",
+"aboutAppDescription": "An app that helps employees track attendance, submit requests, and receive notifications easily with a simple UI and smooth UX.",
+"feature1": "🕒 Easily log your daily check-ins and check-outs.",
+"feature2": "📤 Submit leave or task requests in one tap.",
+"feature3": "📄 Track the status of your requests in real time.",
+"feature4": "🔔 Receive instant alerts for any updates.",
+"feature5": "🔒 Full protection and privacy of your data.",
+"deleteAccountPrompt": "Want to delete your account?",
+"deleteAccount": "Delete Account",
+"confirmDeleteTitle": "Confirm Account Deletion",
+"confirmDeleteContent": "Are you sure you want to permanently delete your account? This action cannot be undone.",
+"cancel": "Cancel",
+"delete": "Delete",
+"appVersion_": "Version 1.0.0 • Developed by Palace HR Team",
+"userProfile": "User Profile",
+"emailLabel": "Email",
+"phoneLabel": "Phone Number",
+"jobTitleLabel": "Job Title"
+
 
 
   }

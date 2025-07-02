@@ -47,6 +47,13 @@ class FetchRequestsCubit extends Cubit<FetchRequestsState> {
   }
 
   void fetchRequestsBySort({String? status = 'pending'}) {
+    if (status == 'قيد الانتظار') {
+      status = 'pending';
+    } else if (status == 'مقبول') {
+      status = 'approved';
+    } else if (status == 'مرفوض') {
+      status = 'rejected';
+    }
     final filteredList =
         requests.where((element) => element.requestStatus == status).toList();
 

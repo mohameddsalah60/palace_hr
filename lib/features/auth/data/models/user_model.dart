@@ -14,6 +14,7 @@ class UserModel extends UserEntity {
     super.faceIdUrl = '',
     required super.jobTitle,
     super.offDay,
+    @JsonValue(false) super.isAdmin,
   });
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
@@ -29,6 +30,7 @@ class UserModel extends UserEntity {
       faceIdUrl: userEntity.faceIdUrl,
       jobTitle: userEntity.jobTitle,
       offDay: userEntity.offDay,
+      isAdmin: userEntity.isAdmin ?? false,
     );
   }
   Map<String, dynamic> toMap() {
@@ -42,6 +44,7 @@ class UserModel extends UserEntity {
       'faceIdUrl': faceIdUrl,
       'jobTitle': jobTitle,
       'offDay': offDay,
+      'isAdmin': isAdmin,
     };
   }
 }

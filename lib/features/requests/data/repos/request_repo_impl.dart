@@ -80,15 +80,20 @@ class RequestRepoImpl implements RequestRepo {
         DateTime.now().month == 12 ? 1 : (DateTime.now().month) + 1,
         1,
       );
+      String sortedStartDateStr = sortedStartDate.toIso8601String();
+      String sortedEndDateStr = sortedEndDate.toIso8601String();
       var response = await databaseService.getData(
         path: ConstantsDatabasePath.getUserData,
         uId: getUser().email,
         subPath: ConstantsDatabasePath.addUserRequest,
         query: {
-          'orderBy': 'requestDateDay',
+          'orderBy': 'requestCreatedAt',
           'descending': true,
-          'startAt': sortedStartDate.toIso8601String(),
-          'endAt': sortedEndDate.toIso8601String(),
+          'whereRange': {
+            'field': 'requestCreatedAt',
+            'isGreaterThanOrEqualTo': sortedStartDateStr,
+            'isLessThan': sortedEndDateStr,
+          },
         },
       );
       for (var i in response) {

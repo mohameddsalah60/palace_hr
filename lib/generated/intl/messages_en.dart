@@ -22,8 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Account": MessageLookupByLibrary.simpleMessage("Account"),
+    "General": MessageLookupByLibrary.simpleMessage("General"),
     "LoginSuccess": MessageLookupByLibrary.simpleMessage("Login successful"),
     "Nopenalties": MessageLookupByLibrary.simpleMessage("No penalties 🎉"),
+    "aboutApp": MessageLookupByLibrary.simpleMessage("About the App"),
+    "aboutAppDescription": MessageLookupByLibrary.simpleMessage(
+      "An app that helps employees track attendance, submit requests, and receive notifications easily with a simple UI and smooth UX.",
+    ),
+    "aboutAppTitle": MessageLookupByLibrary.simpleMessage(
+      "Palace HR | Human Resources Management",
+    ),
     "accountExistsWithDifferentCredential":
         MessageLookupByLibrary.simpleMessage(
           "An account already exists with a different credential.",
@@ -37,12 +46,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "Palace HR is a comprehensive human resources management system designed to streamline HR processes and enhance employee engagement.",
     ),
     "appVersion": MessageLookupByLibrary.simpleMessage("Version 1.0.0"),
+    "appVersion_": MessageLookupByLibrary.simpleMessage(
+      "Version 1.0.0 • Developed by Palace HR Team",
+    ),
     "attendanceToday": MessageLookupByLibrary.simpleMessage("Day Attendance"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "Login process was cancelled.",
     ),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "checkIn": MessageLookupByLibrary.simpleMessage("Check-in"),
     "checkOut": MessageLookupByLibrary.simpleMessage("Check-out"),
+    "confirmDeleteContent": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to permanently delete your account? This action cannot be undone.",
+    ),
+    "confirmDeleteTitle": MessageLookupByLibrary.simpleMessage(
+      "Confirm Account Deletion",
+    ),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+    "deleteAccountPrompt": MessageLookupByLibrary.simpleMessage(
+      "Want to delete your account?",
+    ),
     "departure": MessageLookupByLibrary.simpleMessage("Departure"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
@@ -54,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email address.",
     ),
+    "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
     "emailNotFound": MessageLookupByLibrary.simpleMessage(
       "Email not found, please contact admin Palace HR",
     ),
@@ -62,6 +88,21 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "excellent": MessageLookupByLibrary.simpleMessage(
       "Keep it up, your work is excellent!",
+    ),
+    "feature1": MessageLookupByLibrary.simpleMessage(
+      "🕒 Easily log your daily check-ins and check-outs.",
+    ),
+    "feature2": MessageLookupByLibrary.simpleMessage(
+      "📤 Submit leave or task requests in one tap.",
+    ),
+    "feature3": MessageLookupByLibrary.simpleMessage(
+      "📄 Track the status of your requests in real time.",
+    ),
+    "feature4": MessageLookupByLibrary.simpleMessage(
+      "🔔 Receive instant alerts for any updates.",
+    ),
+    "feature5": MessageLookupByLibrary.simpleMessage(
+      "🔒 Full protection and privacy of your data.",
     ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "forgetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
@@ -78,11 +119,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email address.",
     ),
+    "jobTitleLabel": MessageLookupByLibrary.simpleMessage("Job Title"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading...."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginSuccessTitle": MessageLookupByLibrary.simpleMessage(
       "You’ve successfully loggedin ",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "mypenalties": MessageLookupByLibrary.simpleMessage("My Penalties"),
     "myrequest": MessageLookupByLibrary.simpleMessage("My Requests"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
@@ -118,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "At least 1 uppercase letter",
     ),
     "permissions": MessageLookupByLibrary.simpleMessage("Permissions"),
+    "phoneLabel": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "present": MessageLookupByLibrary.simpleMessage("Present"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "Privacy Policy.",
@@ -137,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "serverErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Server error. Please try again later.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sickLeave": MessageLookupByLibrary.simpleMessage("Sick Leave"),
     "startButton": MessageLookupByLibrary.simpleMessage("Start   📸"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("Submit Request"),
@@ -160,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "No account found with this email.",
     ),
+    "userProfile": MessageLookupByLibrary.simpleMessage("User Profile"),
     "verificationCodeSent": MessageLookupByLibrary.simpleMessage(
       "Verification code sent to your email",
     ),
