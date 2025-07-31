@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:palace_hr/features/auth/domin/entites/user_entity.dart';
 import 'package:palace_hr/features/auth/presentation/views/forget_password_view.dart';
 import 'package:palace_hr/features/auth/presentation/views/sign_in_view.dart';
+import 'package:palace_hr/features/dashboard/presentation/views/all_employees_view.dart';
+import 'package:palace_hr/features/dashboard/presentation/views/user_details_view.dart';
 import 'package:palace_hr/features/home/presentation/views/home_view.dart';
 import 'package:palace_hr/features/penalties/presentation/views/my_penalties_view.dart';
 import 'package:palace_hr/features/requests/presentation/views/user_request_view.dart';
@@ -42,6 +45,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const AboutAppPage());
       case AppRoutes.profile:
         return MaterialPageRoute(builder: (context) => const UserProfilePage());
+
+      case AppRoutes.allEmployees:
+        return MaterialPageRoute(
+          builder: (context) => const AllEmployeesView(),
+        );
+      case AppRoutes.uaerDetails:
+        final user = settings.arguments as UserEntity;
+        return MaterialPageRoute(
+          builder: (context) => UserDetailsView(user: user),
+        );
 
       default:
         return MaterialPageRoute(

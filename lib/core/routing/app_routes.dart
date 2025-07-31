@@ -9,4 +9,6 @@ class AppRoutes {
   static const String settings = '/settings';
   static const String aboutApp = '/aboutApp';
   static const String profile = '/profile';
+  static const String allEmployees = '/allEmployees';
+  static const String uaerDetails = '/userDetalis';
 }

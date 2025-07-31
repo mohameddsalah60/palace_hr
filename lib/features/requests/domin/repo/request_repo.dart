@@ -13,4 +13,5 @@ abstract class RequestRepo {
   Future<Either<ApiErrorModel, void>> cancelRequest({
     required RequestUserInputEntity request,
   });
+  Future<Either<ApiErrorModel, void>> getDataUser();
 }

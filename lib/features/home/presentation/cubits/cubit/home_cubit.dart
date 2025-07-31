@@ -158,7 +158,7 @@ class HomeCubit extends Cubit<HomeState> {
     final ImagePicker picker = ImagePicker();
 
     if (kDebugMode) {
-      final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
+      final XFile? photo = await picker.pickImage(source: ImageSource.camera);
 
       return photo;
     } else {

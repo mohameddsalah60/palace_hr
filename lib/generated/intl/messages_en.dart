@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmDeleteTitle": MessageLookupByLibrary.simpleMessage(
       "Confirm Account Deletion",
     ),
+    "dashboardHr": MessageLookupByLibrary.simpleMessage("Dashboard Palace HR"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
     "deleteAccountPrompt": MessageLookupByLibrary.simpleMessage(
@@ -112,6 +113,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fromTime": MessageLookupByLibrary.simpleMessage("From Time"),
     "genericErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Something went wrong. Please try again.",
+    ),
+    "hintSearchEmployee": MessageLookupByLibrary.simpleMessage(
+      "Find employee by name, email, or phone",
     ),
     "invalidCredential": MessageLookupByLibrary.simpleMessage(
       "Invalid credentials provided.",
@@ -190,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "termsTitle": MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
     "toTime": MessageLookupByLibrary.simpleMessage("To Time"),
+    "totalEmployees": MessageLookupByLibrary.simpleMessage("Total Employees"),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "Unauthorized access. Please log in again.",
     ),
@@ -215,6 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcomeBackMessage": MessageLookupByLibrary.simpleMessage(
       "Welcome back! \nPlease login to your account.",
     ),
+    "welcomeTo": MessageLookupByLibrary.simpleMessage("👋 Welcome to"),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "Incorrect email or password.",
     ),

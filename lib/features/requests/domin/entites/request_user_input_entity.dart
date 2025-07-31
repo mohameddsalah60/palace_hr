@@ -4,13 +4,19 @@ import 'package:intl/intl.dart';
 import '../../../../core/helpers/is_english_locale_funcation.dart';
 
 class RequestUserInputEntity {
-  final String requestType;
-  final String? requestNotes, requestStatus;
+  final String requestType,
+      requestCreatedBy,
+      requestUserImage,
+      requestUserEmail;
+  String? requestNotes, requestStatus;
   final DateTime? requestFromDate,
       requestToDate,
       requestDateDay,
       requestCreatedAt;
   RequestUserInputEntity({
+    required this.requestCreatedBy,
+    required this.requestUserImage,
+    required this.requestUserEmail,
     this.requestCreatedAt,
     required this.requestType,
     this.requestStatus = 'pending',

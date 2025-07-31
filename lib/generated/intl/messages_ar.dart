@@ -65,6 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmDeleteTitle": MessageLookupByLibrary.simpleMessage(
       "تأكيد حذف الحساب",
     ),
+    "dashboardHr": MessageLookupByLibrary.simpleMessage(
+      "لوحة التحكم - Palace HR",
+    ),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "deleteAccountPrompt": MessageLookupByLibrary.simpleMessage(
@@ -114,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fromTime": MessageLookupByLibrary.simpleMessage("من الساعة"),
     "genericErrorMessage": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ ما، برجاء المحاولة مرة أخرى.",
+    ),
+    "hintSearchEmployee": MessageLookupByLibrary.simpleMessage(
+      "ابحث بالاسم أو البريد الإلكتروني أو الهاتف",
     ),
     "invalidCredential": MessageLookupByLibrary.simpleMessage(
       "بيانات اعتماد غير صالحة.",
@@ -192,6 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "termsTitle": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "toTime": MessageLookupByLibrary.simpleMessage("إلى الساعة"),
+    "totalEmployees": MessageLookupByLibrary.simpleMessage(
+      "إجمالي عدد الموظفين",
+    ),
     "unauthorizedMessage": MessageLookupByLibrary.simpleMessage(
       "دخول غير مصرح به. يرجى تسجيل الدخول مرة أخرى.",
     ),
@@ -215,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcomeBackMessage": MessageLookupByLibrary.simpleMessage(
       "مرحبا بعودتك! \nالرجاء تسجيل الدخول لحسابك للمتابعه.",
     ),
+    "welcomeTo": MessageLookupByLibrary.simpleMessage("👋 أهلاً بك في"),
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
     ),

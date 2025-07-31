@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
+import 'package:palace_hr/features/home/domin/entites/bottom_navigation_bar_entity.dart';
 import 'package:palace_hr/features/home/domin/repos/face_recognition_repo.dart';
 import 'package:palace_hr/features/home/domin/repos/schedules_repo.dart';
 import 'package:palace_hr/features/requests/presentation/fetch_requests_cubit/fetch_requests_cubit.dart';
@@ -52,9 +53,9 @@ class _HomeViewState extends State<HomeView> {
           ? _penaltiesCubit.fetchPenalties()
           : null;
     } else if (index == 2) {
-      _requestsCubit.requests.isEmpty
-          ? _requestsCubit.fetchUserReqeusts()
-          : null;
+      _requestsCubit.fetchUserReqeusts();
+
+      // _requestsCubit.startListeningToUserProfile();
     }
   }
 
@@ -62,6 +63,7 @@ class _HomeViewState extends State<HomeView> {
   void dispose() {
     _penaltiesCubit.close();
     _requestsCubit.close();
+    _logoutCubit.close();
     super.dispose();
   }
 
@@ -72,6 +74,7 @@ class _HomeViewState extends State<HomeView> {
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onBottomNavTapped,
+        list: bottomNavigationBarItem,
       ),
       body: IndexedStack(
         index: _currentIndex,

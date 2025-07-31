@@ -859,6 +859,41 @@ class S {
   String get jobTitleLabel {
     return Intl.message('Job Title', name: 'jobTitleLabel', desc: '', args: []);
   }
+
+  /// `Find employee by name, email, or phone`
+  String get hintSearchEmployee {
+    return Intl.message(
+      'Find employee by name, email, or phone',
+      name: 'hintSearchEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `👋 Welcome to`
+  String get welcomeTo {
+    return Intl.message('👋 Welcome to', name: 'welcomeTo', desc: '', args: []);
+  }
+
+  /// `Dashboard Palace HR`
+  String get dashboardHr {
+    return Intl.message(
+      'Dashboard Palace HR',
+      name: 'dashboardHr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Employees`
+  String get totalEmployees {
+    return Intl.message(
+      'Total Employees',
+      name: 'totalEmployees',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

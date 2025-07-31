@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 
 import 'package:palace_hr/core/errors/api_error_model.dart';
+import 'package:palace_hr/features/auth/domin/entites/user_entity.dart';
 
 import 'package:palace_hr/features/requests/domin/entites/request_user_input_entity.dart';
 
@@ -228,11 +229,9 @@ class RequestRepoImpl implements RequestRepo {
   //     final stream = databaseService.getStreamData(
   //       path: 'users',
   //       uId: getUser().email,
-  //       subPath: 'Requests',
+  //       query: {'where': 'email', 'isEqualTo': getUser().email},
   //     );
-  //     print('Stream started');
   //     await for (var data in stream) {
-  //       log('Data received: $data');
   //       yield data;
   //     }
   //   } catch (e) {
@@ -240,4 +239,28 @@ class RequestRepoImpl implements RequestRepo {
   //     yield* Stream.error(ApiErrorHandler.handleError(e));
   //   }
   // }
+
+  @override
+  Future<Either<ApiErrorModel, void>> getDataUser() async {
+    try {
+      var result = await databaseService.getData(
+        path: ConstantsDatabasePath.getUserData,
+        uId: getUser().email,
+      );
+      UserEntity user = UserModel.fromJson(result);
+      if (getUser().countAnnualDays != user.countAnnualDays ||
+          getUser().countPermission != user.countPermission) {
+        var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+
+        await SharedPreferencesService.setData(
+          key: ConstantsDatabasePath.userDataLocalStorage,
+          value: jsonData,
+        );
+      }
+      return right(null);
+    } catch (e) {
+      log(e.toString());
+      return left(ApiErrorHandler.handleError(e));
+    }
+  }
 }

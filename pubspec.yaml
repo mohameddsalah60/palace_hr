@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^3.13.0
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.2
   flutter_bloc: ^9.1.0
   flutter_datetime_picker_plus: ^2.2.0
   flutter_face_api: ^7.1.245
@@ -61,6 +62,7 @@ dependencies:
   phone_form_field: ^10.0.6
   pull_to_refresh_flutter3: ^2.0.2
   shared_preferences: ^2.5.3
+  smooth_page_indicator: ^1.2.1
   supabase_flutter: ^2.9.0
 
 dev_dependencies:

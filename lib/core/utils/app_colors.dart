@@ -18,4 +18,5 @@ class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color penaltyRed = Color(0xFFD32F2F);
   static const Color penaltyRedLight = Color(0xFFEF9A9A);
+  static const Color greyDiveder = Color(0xFFEDEDED);
 }

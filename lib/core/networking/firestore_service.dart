@@ -41,6 +41,10 @@ class FirestoreService implements DatabaseService {
     String? subPathId,
     Map<String, dynamic>? query,
   }) async {
+    if (uId == null && subPath == null) {
+      var data = await firestoreService.collection(path).get();
+      return data.docs.map((e) => e.data()).toList();
+    }
     if (uId != null && subPath == null) {
       var data = await firestoreService.collection(path).doc(uId).get();
       return data.data();
@@ -191,5 +195,12 @@ class FirestoreService implements DatabaseService {
     }
 
     await firestoreService.collection(path).doc(uId).delete();
+  }
+
+  @override
+  Future<QuerySnapshot<Map<String, dynamic>>> getCollectionGroup({
+    required String path,
+  }) async {
+    return FirebaseFirestore.instance.collectionGroup(path).get();
   }
 }

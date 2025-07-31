@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:palace_hr/core/routing/app_routes.dart';
 
 import 'package:palace_hr/core/utils/app_colors.dart';
 import 'package:palace_hr/core/utils/app_text_styles.dart';
@@ -44,10 +45,10 @@ class SettingsSection extends StatelessWidget {
                   context.read<LogoutCubit>().logoutUser();
                 } else if (items[index].title == "About App" ||
                     items[index].title == "حول التطبيق") {
-                  Navigator.pushNamed(context, '/aboutApp');
+                  Navigator.pushNamed(context, AppRoutes.aboutApp);
                 } else if (items[index].title == "Dashboard" ||
                     items[index].title == "وحدة التحكم") {
-                  Navigator.pushNamed(context, '/aboutApp');
+                  Navigator.pushNamed(context, AppRoutes.allEmployees);
                 }
               },
             );

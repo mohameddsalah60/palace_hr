@@ -29,7 +29,7 @@ class SchedulesEntity {
 class DayEntity {
   final int day;
   final Map<String, DateTime> times;
-  final bool isOffDay;
+  bool isOffDay;
   String formatTime(DateTime? time) {
     if (time == null) return '--:--';
     String formatted = DateFormat(

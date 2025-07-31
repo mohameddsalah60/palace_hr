@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:palace_hr/features/requests/domin/repo/request_repo.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -18,9 +20,26 @@ class FetchRequestsCubit extends Cubit<FetchRequestsState> {
     refreshController.refreshCompleted();
   }
 
+  // StreamSubscription? _subscription;
+
+  // void startListeningToUserProfile() {
+  //   _subscription = requestRepo.updateUserProfile().listen(
+  //     (data) {
+  //       log("Received Data: $data");
+  //       fetchUserReqeusts(); // ✅ لما يحصل تغيير في بيانات اليوزر، عيد تحميل الطلبات
+  //     },
+  //     onError: (error) {
+  //       log("Stream Error: $error");
+  //       // تقدر تعمل emit لحالة فشل لو حبيت
+  //     },
+  //   );
+  // }
+
   @override
   Future<void> close() {
     refreshController.dispose();
+    // _subscription?.cancel(); // مهم تلغي الاشتراك لما تقفل الكيوبت
+
     return super.close();
   }
 

@@ -7,6 +7,8 @@ import 'package:palace_hr/core/networking/storage_service.dart';
 import 'package:palace_hr/core/networking/supabase_storage.dart';
 import 'package:palace_hr/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:palace_hr/features/auth/domin/repos/auth_repo.dart';
+import 'package:palace_hr/features/dashboard/data/repos/dashboard_repo_impl.dart';
+import 'package:palace_hr/features/dashboard/domin/repos/dashboard_repo.dart';
 import 'package:palace_hr/features/home/data/repos/home_repo_impl.dart';
 import 'package:palace_hr/features/home/data/repos/schedules_repo_impl.dart';
 import 'package:palace_hr/features/home/data/repos/user_repo_impl.dart';
@@ -87,5 +89,11 @@ Future<void> setup() async {
 
   getIt.registerSingleton<LogOutUserRepo>(
     LogOutUserRepoImpl(authService: getIt<AuthService>()),
+  );
+  getIt.registerSingleton<DashboardRepo>(
+    DashboardRepoImpl(
+      authService: getIt<AuthService>(),
+      databaseService: getIt<DatabaseService>(),
+    ),
   );
 }

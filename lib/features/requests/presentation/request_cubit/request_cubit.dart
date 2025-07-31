@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -19,8 +21,8 @@ class RequestCubit extends Cubit<RequestState> {
   TextEditingController requestNotesController = TextEditingController();
   TextEditingController requestAttachmentController = TextEditingController();
   String requestTypeController = '';
-  int premission = getUser().countPermission;
-  int leave = getUser().countAnnualDays;
+  int premission = 0;
+  int leave = 0;
   final RequestRepo requestRepo;
 
   Future<void> chooseDayDate(BuildContext context) async {
@@ -178,6 +180,9 @@ class RequestCubit extends Cubit<RequestState> {
   Future<void> sendRequest() async {
     emit(RequestLoadingState());
     RequestUserInputEntity requestUserInputEntity = RequestUserInputEntity(
+      requestCreatedBy: getUser().name,
+      requestUserEmail: getUser().email,
+      requestUserImage: getUser().faceIdUrl ?? '',
       requestCreatedAt: DateTime.now(),
       requestType: requestTypeController,
       requestDateDay: DateTime.parse(requestDayDateController.text),
@@ -191,6 +196,7 @@ class RequestCubit extends Cubit<RequestState> {
               : null,
       requestNotes: requestNotesController.text,
     );
+    log(requestUserInputEntity.requestFromDate.toString());
     var result = await requestRepo.createRequest(
       requestUserInputEntity: requestUserInputEntity,
     );
@@ -221,16 +227,28 @@ class RequestCubit extends Cubit<RequestState> {
   }
 
   DateTime parseTimeStringToDateTime(String date) {
-    final now = DateTime.now();
-
     var timeDate = DateFormat('hh:mm a').parse(date);
     timeDate = DateTime(
-      now.year,
-      now.month,
-      now.day,
+      DateTime.parse(requestDayDateController.text).year,
+      DateTime.parse(requestDayDateController.text).month,
+      DateTime.parse(requestDayDateController.text).day,
       timeDate.hour,
       timeDate.minute,
     );
     return timeDate;
+  }
+
+  getDataUser() async {
+    var result = await requestRepo.getDataUser();
+    result.fold(
+      (error) {
+        emit(RequestErrorState(error.errMessage));
+      },
+      (success) {
+        premission = getUser().countPermission;
+        leave = getUser().countAnnualDays;
+        log('User data fetched successfully');
+      },
+    );
   }
 }

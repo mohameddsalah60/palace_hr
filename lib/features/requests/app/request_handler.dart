@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:palace_hr/core/helpers/get_user.dart';
 import 'package:palace_hr/features/requests/domin/entites/request_user_input_entity.dart';
 import 'package:palace_hr/features/requests/domin/repo/request_repo.dart';
 
@@ -18,6 +19,9 @@ class RequestHandler {
       try {
         final result = await repo.createRequest(
           requestUserInputEntity: RequestUserInputEntity(
+            requestCreatedBy: getUser().name,
+            requestUserEmail: getUser().email,
+            requestUserImage: getUser().faceIdUrl ?? "",
             requestCreatedAt: DateTime.now(),
             requestDateDay: date,
             requestType: 'Overtime',

@@ -7,11 +7,13 @@ import 'navigation_bar_item_bottom.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final List<BottomNavigationBarEntity>? list;
 
   const CustomBottomNavigationBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    this.list,
   });
 
   @override
@@ -34,7 +36,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:
-            bottomNavigationBarItem.asMap().entries.map((e) {
+            list!.asMap().entries.map((e) {
               var index = e.key;
               var entity = e.value;
               return GestureDetector(

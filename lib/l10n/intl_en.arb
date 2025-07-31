@@ -93,7 +93,11 @@
 "userProfile": "User Profile",
 "emailLabel": "Email",
 "phoneLabel": "Phone Number",
-"jobTitleLabel": "Job Title"
+"jobTitleLabel": "Job Title",
+"hintSearchEmployee": "Find employee by name, email, or phone",
+"welcomeTo": "👋 Welcome to",
+"dashboardHr": "Dashboard Palace HR",
+"totalEmployees": "Total Employees"
 
 
 

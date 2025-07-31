@@ -21,7 +21,7 @@ class UserRequestView extends StatelessWidget {
       backgroundColor: AppColors.wheitDark,
       appBar: buildAppBar(context, title: S.of(context).newRequest),
       body: BlocProvider(
-        create: (context) => RequestCubit(getIt<RequestRepo>()),
+        create: (context) => RequestCubit(getIt<RequestRepo>())..getDataUser(),
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.0.r, vertical: 24.h),
           child: Column(

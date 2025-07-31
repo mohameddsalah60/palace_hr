@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 extension Navigation on BuildContext {
-  void pushNamed(String routeName) {
-    Navigator.pushNamed(this, routeName);
+  void pushNamed(String routeName, {Object? arguments}) {
+    Navigator.pushNamed(this, routeName, arguments: arguments);
   }
 
   void pushReplacementNamed(String routeName) {

@@ -1,7 +1,12 @@
+import 'package:palace_hr/core/helpers/get_user.dart';
+
 import '../../domin/entites/request_user_input_entity.dart';
 
 class RequestUserInputModel extends RequestUserInputEntity {
   RequestUserInputModel({
+    required super.requestCreatedBy,
+    required super.requestUserEmail,
+    required super.requestUserImage,
     required super.requestType,
     super.requestStatus,
     required super.requestDateDay,
@@ -13,6 +18,9 @@ class RequestUserInputModel extends RequestUserInputEntity {
 
   factory RequestUserInputModel.fromMap(Map<String, dynamic> data) {
     return RequestUserInputModel(
+      requestCreatedBy: getUser().name,
+      requestUserEmail: getUser().email,
+      requestUserImage: getUser().faceIdUrl ?? '',
       requestCreatedAt:
           data['requestCreatedAt'] != null
               ? DateTime.parse(data['requestCreatedAt'])
@@ -38,6 +46,8 @@ class RequestUserInputModel extends RequestUserInputEntity {
   Map<String, dynamic> toMap() {
     return {
       'requestType': requestType,
+      'requestCreatedBy': requestCreatedBy,
+      'requestUserImage': requestUserImage,
       'requestStatus': requestStatus,
       'requestDateDay': requestDateDay?.toIso8601String(),
       'requestCreatedAt': requestCreatedAt?.toIso8601String(),
@@ -52,6 +62,9 @@ class RequestUserInputModel extends RequestUserInputEntity {
   }
   factory RequestUserInputModel.fromEntity(RequestUserInputEntity entity) {
     return RequestUserInputModel(
+      requestUserEmail: entity.requestUserEmail,
+      requestCreatedBy: entity.requestCreatedBy,
+      requestUserImage: entity.requestUserImage,
       requestType: entity.requestType,
       requestStatus: entity.requestStatus,
       requestDateDay: entity.requestDateDay,

@@ -84,6 +84,7 @@ class HomeRepoImpl implements HomeRepo {
 
       return right(attendanceEntity);
     } catch (e) {
+      log(e.toString());
       return left(ApiErrorHandler.handleError(e));
     }
   }
@@ -181,7 +182,7 @@ class HomeRepoImpl implements HomeRepo {
         path: ConstantsDatabasePath.getUserData,
         docId: getUser().email,
         subPath: ConstantsDatabasePath.getUserSchedule,
-        subPathId: "${date.year}-${date.month.toString().padLeft(2, '0')}",
+        subPathId: "${date.year}-${date.month.toString()}",
       );
 
       SchedulesEntity schedulesModel = SchedulesModel.fromJson(scheduleData!);

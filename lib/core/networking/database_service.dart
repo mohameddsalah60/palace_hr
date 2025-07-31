@@ -13,6 +13,7 @@ abstract class DatabaseService {
     String? subPathId,
     Map<String, dynamic>? query,
   });
+  Future<dynamic> getCollectionGroup({required String path});
   Stream<dynamic> getStreamData({
     required String path,
     String? uId,

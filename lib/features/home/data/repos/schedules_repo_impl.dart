@@ -23,8 +23,7 @@ class SchedulesRepoImpl implements SchedulesRepo {
     required DateTime date,
   }) async {
     try {
-      final formattedMonth =
-          "${date.year}-${date.month.toString().padLeft(2, '0')}";
+      final formattedMonth = "${date.year}-${date.month.toString()}";
       final result = await HomeUtils.getData(
         databaseService: databaseService,
         path: ConstantsDatabasePath.getUserData,

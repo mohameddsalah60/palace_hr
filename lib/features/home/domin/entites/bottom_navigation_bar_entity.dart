@@ -28,3 +28,19 @@ List<BottomNavigationBarEntity> get bottomNavigationBarItem => [
     name: isEnglishLocale() ? 'Settings' : 'الاعدادات',
   ),
 ];
+List<BottomNavigationBarEntity> get adminPanelBottomNavigation => [
+  BottomNavigationBarEntity(
+    icon: FontAwesomeIcons.userClock,
+    name: isEnglishLocale() ? 'Employees' : 'الموظفون',
+  ),
+
+  BottomNavigationBarEntity(
+    icon: FontAwesomeIcons.clipboardList,
+    name: isEnglishLocale() ? 'Requests' : 'الطلبات',
+  ),
+
+  BottomNavigationBarEntity(
+    icon: FontAwesomeIcons.userPlus,
+    name: isEnglishLocale() ? 'Add User' : 'اضافة حساب',
+  ),
+];
