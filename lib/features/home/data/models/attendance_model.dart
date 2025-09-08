@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:palace_hr/features/home/domin/entites/attendance_entity.dart';
 
 class AttendanceModel extends AttendanceEntity {
@@ -10,7 +11,7 @@ class AttendanceModel extends AttendanceEntity {
   });
   factory AttendanceModel.fromJson(Map<String, dynamic> json) {
     return AttendanceModel(
-      dateTime: DateTime.parse(json['dateTime']),
+      dateTime: (json['dateTime'] as Timestamp).toDate(),
       checkIn: json['checkIn'] ?? '',
       checkOut: json['checkOut'] ?? '',
       isLate: (json['isLate'] as bool),
@@ -28,7 +29,7 @@ class AttendanceModel extends AttendanceEntity {
   }
   Map<String, dynamic> toJson() {
     return {
-      'dateTime': dateTime.toIso8601String(),
+      'dateTime': dateTime,
       'checkIn': checkIn,
       'checkOut': checkOut,
       'isLate': isLate,

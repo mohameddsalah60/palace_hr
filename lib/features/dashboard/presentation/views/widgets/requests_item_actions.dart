@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:palace_hr/core/utils/app_text_styles.dart';
-import 'package:palace_hr/features/dashboard/presentation/cubits/cubit/fetch_employees_requests_cubit.dart';
+import 'package:palace_hr/features/dashboard/presentation/cubits/fetch_employees_requests_cubit/fetch_employees_requests_cubit.dart';
 
 import '../../../../requests/domin/entites/request_user_input_entity.dart';
 

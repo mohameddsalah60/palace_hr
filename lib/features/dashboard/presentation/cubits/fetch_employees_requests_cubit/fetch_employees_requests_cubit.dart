@@ -12,9 +12,9 @@ class FetchEmployeesRequestsCubit extends Cubit<FetchEmployeesRequestsState> {
   final DashboardRepo dashboardRepo;
   Timer? _debounce;
   List<RequestUserInputEntity> requests = [];
-  void fetchEmployeesRequests() async {
+  void fetchEmployeesRequests({String? email}) async {
     emit(FetchEmployeesRequestsLoading());
-    final result = await dashboardRepo.fetchAllRequests();
+    final result = await dashboardRepo.fetchRequests(email: email);
     result.fold(
       (failure) {
         emit(FetchEmployeesRequestsFailure(message: failure.errMessage));

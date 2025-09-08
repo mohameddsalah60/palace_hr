@@ -21,7 +21,7 @@ class UserDetailsButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 120.w,
+        width: 130.w,
         decoration: BoxDecoration(
           color: AppColors.wheitDark,
           borderRadius: BorderRadius.circular(12.r),
@@ -36,6 +36,7 @@ class UserDetailsButton extends StatelessWidget {
             SizedBox(height: 12.h),
             Text(
               txt,
+              maxLines: 1,
               style: AppTextStyles.fontWeight400Size14.copyWith(
                 color: AppColors.black,
                 fontSize: 16.sp,

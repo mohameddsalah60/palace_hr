@@ -894,6 +894,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Requests`
+  String get request {
+    return Intl.message('Requests', name: 'request', desc: '', args: []);
+  }
+
+  /// `Add New User`
+  String get addUser {
+    return Intl.message('Add New User', name: 'addUser', desc: '', args: []);
+  }
+
+  /// `Employee Details`
+  String get employeeDetails {
+    return Intl.message(
+      'Employee Details',
+      name: 'employeeDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Shift`
+  String get editShift {
+    return Intl.message('Edit Shift', name: 'editShift', desc: '', args: []);
+  }
+
+  /// `Penalties`
+  String get penalties {
+    return Intl.message('Penalties', name: 'penalties', desc: '', args: []);
+  }
+
+  /// `Change shift for the whole month`
+  String get changeForWholeMonth {
+    return Intl.message(
+      'Change shift for the whole month',
+      name: 'changeForWholeMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change shift for the selected day`
+  String get changeForSelectedDay {
+    return Intl.message(
+      'Change shift for the selected day',
+      name: 'changeForSelectedDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mark day as off`
+  String get markDayAsOff {
+    return Intl.message(
+      'Mark day as off',
+      name: 'markDayAsOff',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shift changed successfully`
+  String get shiftChanged {
+    return Intl.message(
+      'Shift changed successfully',
+      name: 'shiftChanged',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save Changes',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Check-in`
+  String get cancelCheckin {
+    return Intl.message(
+      'Cancel Check-in',
+      name: 'cancelCheckin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Check-out`
+  String get cancelCheckout {
+    return Intl.message(
+      'Cancel Check-out',
+      name: 'cancelCheckout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No attendance found this month`
+  String get noAttendance {
+    return Intl.message(
+      'No attendance found this month',
+      name: 'noAttendance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

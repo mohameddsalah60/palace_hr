@@ -4,7 +4,7 @@ import 'package:palace_hr/core/di/getit_service_loacator.dart';
 import 'package:palace_hr/core/utils/app_colors.dart';
 
 import 'package:palace_hr/features/dashboard/domin/repos/dashboard_repo.dart';
-import 'package:palace_hr/features/dashboard/presentation/cubits/cubit/fetch_employees_requests_cubit.dart';
+import 'package:palace_hr/features/dashboard/presentation/cubits/fetch_employees_requests_cubit/fetch_employees_requests_cubit.dart';
 import 'package:palace_hr/features/dashboard/presentation/cubits/fetch_employees_cubit/fetch_employees_cubit.dart';
 import 'package:palace_hr/features/home/domin/entites/bottom_navigation_bar_entity.dart';
 import 'package:palace_hr/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';

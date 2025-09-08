@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "يوجد حساب بنفس البريد ولكن بمصدر تسجيل مختلف.",
         ),
+    "addUser": MessageLookupByLibrary.simpleMessage("اضافة حساب جديد"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage(
       "ملاحظات إضافية (اختياري)",
     ),
@@ -53,8 +54,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "attendanceToday": MessageLookupByLibrary.simpleMessage("الحضور اليوم"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "cancelCheckin": MessageLookupByLibrary.simpleMessage("إلغاء تسجيل الدخول"),
+    "cancelCheckout": MessageLookupByLibrary.simpleMessage(
+      "إلغاء تسجيل الخروج",
+    ),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء عملية تسجيل الدخول.",
+    ),
+    "changeForSelectedDay": MessageLookupByLibrary.simpleMessage(
+      "تغيير الشيفت لليوم المحدد",
+    ),
+    "changeForWholeMonth": MessageLookupByLibrary.simpleMessage(
+      "تغيير الشيفت للشهر كامل",
     ),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغير اللغة"),
     "checkIn": MessageLookupByLibrary.simpleMessage("الدخول"),
@@ -74,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل ترغب في حذف حسابك؟",
     ),
     "departure": MessageLookupByLibrary.simpleMessage("الانصراف"),
+    "editShift": MessageLookupByLibrary.simpleMessage("تعديل الوردية"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "هذا البريد مسجل مسبقًا. يرجى تسجيل الدخول.",
@@ -91,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "حقل البريد الإلكتروني مطلوب.",
     ),
+    "employeeDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الموظف"),
     "excellent": MessageLookupByLibrary.simpleMessage(
       "استمر في الالتزام، شغلك ممتاز!",
     ),
@@ -134,12 +147,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "سجلت دخولك بنجاح",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "markDayAsOff": MessageLookupByLibrary.simpleMessage("تحديد اليوم كإجازة"),
     "mypenalties": MessageLookupByLibrary.simpleMessage("خصوماتي"),
     "myrequest": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت.",
     ),
     "newRequest": MessageLookupByLibrary.simpleMessage("طلب جديد"),
+    "noAttendance": MessageLookupByLibrary.simpleMessage(
+      "لم يتم تسجيل حضور هذا الشهر",
+    ),
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت. تحقق من الاتصال.",
     ),
@@ -170,16 +187,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "على الأقل حرف كبير واحد",
     ),
+    "penalties": MessageLookupByLibrary.simpleMessage("الجزاءات"),
     "permissions": MessageLookupByLibrary.simpleMessage("اذونات"),
     "phoneLabel": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "present": MessageLookupByLibrary.simpleMessage("الحضور"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "سياسة الخصوصية.",
     ),
+    "request": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم إرسال الطلب بنجاح.",
     ),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
     "selectDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "selectRequestType": MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
     "selfieRequestBody": MessageLookupByLibrary.simpleMessage(
@@ -190,6 +210,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "خطأ في الخادم. حاول لاحقًا.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "shiftChanged": MessageLookupByLibrary.simpleMessage(
+      "تم تعديل الشيفت بنجاح",
+    ),
     "sickLeave": MessageLookupByLibrary.simpleMessage("إجازة مرضية"),
     "startButton": MessageLookupByLibrary.simpleMessage("📸   ابدأ"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("إرسال الطلب"),

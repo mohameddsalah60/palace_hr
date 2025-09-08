@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:palace_hr/core/utils/app_colors.dart';
 import 'package:palace_hr/core/utils/app_text_styles.dart';
 import 'package:palace_hr/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:palace_hr/core/widgets/custom_search_field.dart';
-import 'package:palace_hr/features/dashboard/presentation/cubits/cubit/fetch_employees_requests_cubit.dart';
+import 'package:palace_hr/features/dashboard/presentation/cubits/fetch_employees_requests_cubit/fetch_employees_requests_cubit.dart';
 import 'package:palace_hr/generated/l10n.dart';
 
 import 'request_catogry_list.dart';
@@ -25,7 +26,10 @@ class ManageRequestsSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 24.h),
-                  Text('Requests', style: AppTextStyles.fontWeight700Size24),
+                  Text(
+                    S.of(context).request,
+                    style: AppTextStyles.fontWeight700Size24,
+                  ),
                   SizedBox(height: 24.h),
                   CustomSearchField(
                     hintText: S.of(context).hintSearchEmployee,
@@ -61,7 +65,9 @@ class ManageRequestsSection extends StatelessWidget {
                   SliverToBoxAdapter(child: Center(child: Text(state.message)));
                 }
                 return SliverToBoxAdapter(
-                  child: CustomCircularProgressIndicator(),
+                  child: CustomCircularProgressIndicator(
+                    color: AppColors.mainBlue,
+                  ),
                 );
               },
             ),

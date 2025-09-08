@@ -12,7 +12,20 @@ class SchedulesModel extends SchedulesEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {'days': days.map((day) => (day as DayModel).toJson()).toList()};
+    return {
+      'days':
+          days.map((day) {
+            if (day is DayModel) {
+              return day.toJson();
+            } else {
+              return DayModel(
+                day: day.day,
+                times: day.times,
+                isOffDay: day.isOffDay,
+              ).toJson();
+            }
+          }).toList(),
+    };
   }
 }
 

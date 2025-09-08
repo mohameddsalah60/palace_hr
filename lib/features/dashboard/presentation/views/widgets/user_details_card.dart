@@ -58,7 +58,7 @@ class UserDetailsCard extends StatelessWidget {
             SizedBox(height: 16.h),
             Divider(color: AppColors.greyDiveder, thickness: 1),
             SizedBox(height: 16.h),
-            UserActions(),
+            UserActions(emailUser: user.email),
           ],
         ),
       ),

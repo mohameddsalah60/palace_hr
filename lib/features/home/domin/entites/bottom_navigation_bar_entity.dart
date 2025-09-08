@@ -38,9 +38,4 @@ List<BottomNavigationBarEntity> get adminPanelBottomNavigation => [
     icon: FontAwesomeIcons.clipboardList,
     name: isEnglishLocale() ? 'Requests' : 'الطلبات',
   ),
-
-  BottomNavigationBarEntity(
-    icon: FontAwesomeIcons.userPlus,
-    name: isEnglishLocale() ? 'Add User' : 'اضافة حساب',
-  ),
 ];

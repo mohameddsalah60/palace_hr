@@ -1,18 +1,24 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/is_english_locale_funcation.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../cubits/cubit/home_cubit.dart';
 
-class HomeCalendar extends StatelessWidget {
-  const HomeCalendar({super.key});
+class CustomCalendar extends StatelessWidget {
+  const CustomCalendar({
+    super.key,
+    this.focusedDate,
+    this.onDateChange,
+    this.paddingValue,
+  });
+  final DateTime? focusedDate;
+  final void Function(DateTime)? onDateChange;
+  final double? paddingValue;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: paddingValue ?? 16),
       padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 16.r),
       decoration: ShapeDecoration(
         color: AppColors.wheit,
@@ -56,12 +62,10 @@ class HomeCalendar extends StatelessWidget {
           firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
           lastDate: DateTime(DateTime.now().year, DateTime.now().month + 1, 0),
 
-          focusedDate: context.watch<HomeCubit>().dateT,
+          focusedDate: focusedDate,
           locale: isEnglishLocale() ? Locale('en') : Locale('ar'),
 
-          onDateChange: (date) {
-            context.read<HomeCubit>().updateSelectedDay(date);
-          },
+          onDateChange: onDateChange,
         ),
       ),
     );

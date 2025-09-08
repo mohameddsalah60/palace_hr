@@ -10,7 +10,7 @@ import '../../request_cubit/request_cubit.dart';
 import 'custom_request_text_field.dart';
 import 'user_request_sumbit_button.dart';
 import 'user_request_type_builder.dart';
-import 'user_request_type_dropdown.dart';
+import '../../../../../core/widgets/custom_dropdown.dart';
 
 class RequestDetails extends StatelessWidget {
   const RequestDetails({super.key});
@@ -41,7 +41,26 @@ class RequestDetails extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          RequestTypeDropdown(),
+          CustomDropdown(
+            onChanged: (value) {
+              context.read<RequestCubit>().setRequestType(value ?? '');
+            },
+            tital: S.of(context).selectRequestType,
+            items: [
+              DropdownMenuItem(
+                value: 'Annoul Leave',
+                child: Text(S.of(context).annualLeave),
+              ),
+              DropdownMenuItem(
+                value: 'Permissions',
+                child: Text(S.of(context).permissions),
+              ),
+              DropdownMenuItem(
+                value: 'Sick Leave',
+                child: Text(S.of(context).sickLeave),
+              ),
+            ],
+          ),
           SizedBox(height: 12.h),
           CustomRequestTextField(
             hint: S.of(context).selectDate,

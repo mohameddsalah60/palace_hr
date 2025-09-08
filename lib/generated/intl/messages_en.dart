@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "An account already exists with a different credential.",
         ),
+    "addUser": MessageLookupByLibrary.simpleMessage("Add New User"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage(
       "Additional Notes (Optional)",
     ),
@@ -51,8 +52,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "attendanceToday": MessageLookupByLibrary.simpleMessage("Day Attendance"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cancelCheckin": MessageLookupByLibrary.simpleMessage("Cancel Check-in"),
+    "cancelCheckout": MessageLookupByLibrary.simpleMessage("Cancel Check-out"),
     "cancellationMessage": MessageLookupByLibrary.simpleMessage(
       "Login process was cancelled.",
+    ),
+    "changeForSelectedDay": MessageLookupByLibrary.simpleMessage(
+      "Change shift for the selected day",
+    ),
+    "changeForWholeMonth": MessageLookupByLibrary.simpleMessage(
+      "Change shift for the whole month",
     ),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "checkIn": MessageLookupByLibrary.simpleMessage("Check-in"),
@@ -70,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Want to delete your account?",
     ),
     "departure": MessageLookupByLibrary.simpleMessage("Departure"),
+    "editShift": MessageLookupByLibrary.simpleMessage("Edit Shift"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "This email is already registered. Please log in.",
@@ -87,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "This field email is required.",
     ),
+    "employeeDetails": MessageLookupByLibrary.simpleMessage("Employee Details"),
     "excellent": MessageLookupByLibrary.simpleMessage(
       "Keep it up, your work is excellent!",
     ),
@@ -130,12 +141,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "You’ve successfully loggedin ",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "markDayAsOff": MessageLookupByLibrary.simpleMessage("Mark day as off"),
     "mypenalties": MessageLookupByLibrary.simpleMessage("My Penalties"),
     "myrequest": MessageLookupByLibrary.simpleMessage("My Requests"),
     "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection.",
     ),
     "newRequest": MessageLookupByLibrary.simpleMessage("New Request"),
+    "noAttendance": MessageLookupByLibrary.simpleMessage(
+      "No attendance found this month",
+    ),
     "noInternetConnectionMessage": MessageLookupByLibrary.simpleMessage(
       "No internet connection. Please check your connection.",
     ),
@@ -164,16 +179,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordUppercase": MessageLookupByLibrary.simpleMessage(
       "At least 1 uppercase letter",
     ),
+    "penalties": MessageLookupByLibrary.simpleMessage("Penalties"),
     "permissions": MessageLookupByLibrary.simpleMessage("Permissions"),
     "phoneLabel": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "present": MessageLookupByLibrary.simpleMessage("Present"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "Privacy Policy.",
     ),
+    "request": MessageLookupByLibrary.simpleMessage("Requests"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
     "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Your request was sent successfully.",
     ),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selectRequestType": MessageLookupByLibrary.simpleMessage(
       "Select Request Type",
@@ -186,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Server error. Please try again later.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "shiftChanged": MessageLookupByLibrary.simpleMessage(
+      "Shift changed successfully",
+    ),
     "sickLeave": MessageLookupByLibrary.simpleMessage("Sick Leave"),
     "startButton": MessageLookupByLibrary.simpleMessage("Start   📸"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("Submit Request"),

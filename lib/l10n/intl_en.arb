@@ -97,7 +97,22 @@
 "hintSearchEmployee": "Find employee by name, email, or phone",
 "welcomeTo": "👋 Welcome to",
 "dashboardHr": "Dashboard Palace HR",
-"totalEmployees": "Total Employees"
+"totalEmployees": "Total Employees",
+"request":"Requests",
+"addUser":"Add New User",
+"employeeDetails":"Employee Details",
+"editShift":"Edit Shift",
+"penalties": "Penalties",
+  "changeForWholeMonth": "Change shift for the whole month",
+  "changeForSelectedDay": "Change shift for the selected day",
+  "markDayAsOff": "Mark day as off",
+  "shiftChanged":"Shift changed successfully",
+  "saveChanges": "Save Changes",
+  "cancelCheckin": "Cancel Check-in",
+  "cancelCheckout": "Cancel Check-out",
+  "noAttendance":"No attendance found this month"
+  
+
 
 
 

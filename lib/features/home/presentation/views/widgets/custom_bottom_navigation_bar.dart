@@ -34,7 +34,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
         shape: RoundedRectangleBorder(),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment:
+            currentIndex >= 2
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.spaceAround,
         children:
             list!.asMap().entries.map((e) {
               var index = e.key;
