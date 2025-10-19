@@ -4,18 +4,6 @@
 
 ---
 
-## 🚀 Features
-
-✅ **Employee Management** – Add, edit, and remove employees easily.  
-✅ **Smart Attendance System** – Tracks attendance using **location** and **face verification**.  
-✅ **Leave & Permission Control** – Approve or reject employee requests directly from the app.  
-✅ **Payroll & Penalties** – Manage salaries, deductions, and monthly reports.  
-✅ **Work Schedule Management** – Create and control staff shifts across the month.  
-✅ **Cloud-based Data** – All data is stored securely using **Firebase** and **Supabase**, ensuring real-time sync and reliability.  
-✅ **Modern Architecture** – Built with **Clean Architecture** and **Cubit** for maintainability and scalability.
-
----
-
 ## 🖼️ App Preview
 
 <table>
@@ -33,7 +21,7 @@
     <td align="center">
       <img src="https://github.com/user-attachments/assets/e3f6376a-08e0-4134-a65f-c606d716a455" width="200">
       <br>
-      <b>Login Success – Selfie Prompt Screen</b>
+      <b>Selfie Prompt Screen</b>
     </td>
     <td align="center">
       <img src="https://github.com/user-attachments/assets/24dd3ad1-73b9-418e-912d-536ebd6b8655" width="200">
@@ -87,13 +75,50 @@
       <br>
       <b>Employees Details</b>
     </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/ccf8ac25-bbd1-4c56-a050-7e82150555d8" width="200">
+      <br>
+      <b>Change Shift Screen</b>
+    </td>
+
   
   </tr>
 </table>
 ---
 
-## 🧩 Tech Stack
+## 🧩 Technologies & Packages Used
 
-- **Flutter** 💙  
-- **Dart**  
-- **Sqflite** (Local Database)  
+### 🧱 Core Framework  
+- **Flutter** – Cross-platform framework for building the Palace HR app using **Clean Architecture + Cubit**.  
+
+### ☁️ Backend & Authentication  
+- **Firebase Auth** – Handles user authentication securely.  
+- **Cloud Firestore** – Real-time database for storing employee, attendance, and leave data.  
+- **Supabase** – Used for additional backend features and cloud storage.
+
+### 📍 Location & Face Verification  
+- **Geolocator** – Detects user’s real-time location for attendance validation.  
+- **Google ML Kit (Face Detection)** & **Flutter Face API** – Used for facial recognition check-in/out.
+
+### 🗓 Attendance & Scheduling  
+- **Table Calendar**, **Easy Date Timeline**, **Calendar Timeline** – For managing schedules, shifts, and attendance logs.
+
+### 💾 Local Storage & Caching  
+- **Shared Preferences** – Stores user session and small data locally.  
+- **Cached Network Image** – For fast and optimized image loading.
+
+### 🧰 State Management & Dependency Injection  
+- **Flutter Bloc (Cubit)** – For structured state management.  
+- **Get It** – For dependency injection and service locator pattern.
+
+### 🎨 UI / UX  
+- **Flutter ScreenUtil** – For responsive UI across all devices.  
+- **Flutter SVG** & **Font Awesome Flutter** – For icons and vector graphics.  
+- **Animate Do** & **Flutter Animate** – For smooth transitions and animations.  
+- **Smooth Page Indicator** – Used in onboarding and intro screens.
+
+### 🧮 Utilities & Helpers  
+- **Dartz** – Functional programming helpers (Either, Option).  
+- **Intl** – For date and number formatting.  
+- **HTTP** – Handles external API calls.  
+- **Build Runner** & **JSON Serializable** – For model generation and code automation.
